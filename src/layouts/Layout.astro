@@ -3,7 +3,9 @@ interface Props {
   title?: string;
   description?: string;
 }
-const { title = 'RandomPicks — CS2 Minigames', description = 'El mejor servidor de minigames para CS2. Únete a nuestra comunidad en Discord.' } = Astro.props;
+const { title = 'RandomPicks — Servidor CS2 Minigames | Bhop, Rangos y Tienda de Skins', description = 'Servidor de CS2 con minigames, bhop, sistema de rangos y tienda de skins. Comunidad española en Discord. Conéctate gratis: cs2.randompicks.es:27015' } = Astro.props;
+const url = 'https://randompicks.es';
+const ogImage = `${url}/random_picks_logo.jpg`;
 ---
 <!doctype html>
 <html lang="es">
@@ -13,10 +15,104 @@ const { title = 'RandomPicks — CS2 Minigames', description = 'El mejor servido
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={description} />
+
+    <!-- SEO básico -->
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content="servidor cs2, cs2 minigames, cs2 bhop, cs2 español, servidor cs2 españa, cs2 mg, cs2 community server, cs2 ranks, cs2 tienda skins, counter strike 2 servidor, randompicks, cs2 surf, servidor cs2 gratis, cs2 bhop server, minigames cs2 españa, comunidad cs2" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="author" content="RandomPicks CS2" />
+    <meta name="theme-color" content="#FF6B2B" />
+    <link rel="canonical" href={url} />
+
+    <!-- Open Graph (WhatsApp, Facebook, Discord) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="RandomPicks — Servidor CS2 Minigames" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:site_name" content="RandomPicks CS2" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content="RandomPicks — Servidor CS2 Minigames" />
+
+    <!-- Schema.org: WebSite -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "RandomPicks CS2",
+      "url": "https://randompicks.es",
+      "description": "Servidor de CS2 con minigames, bhop, sistema de rangos y tienda de skins. Comunidad española.",
+      "inLanguage": "es",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://randompicks.es/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <!-- Schema.org: Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "RandomPicks CS2",
+      "url": "https://randompicks.es",
+      "logo": "https://randompicks.es/random_picks_logo.jpg",
+      "sameAs": ["https://discord.gg/HSMZT6njnk"],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "url": "https://discord.gg/HSMZT6njnk",
+        "availableLanguage": "Spanish"
+      }
+    }
+    </script>
+
+    <!-- Schema.org: VideoGame -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoGame",
+      "name": "RandomPicks — Servidor CS2 Minigames",
+      "description": "Servidor comunitario de Counter-Strike 2 con modos de juego como minigames, bhop, sistema de rangos y tienda de skins. Gratis y en español.",
+      "url": "https://randompicks.es",
+      "applicationCategory": "Game",
+      "operatingSystem": "Windows",
+      "gamePlatform": "PC",
+      "genre": ["Minigames", "Bhop", "FPS", "Community Server"],
+      "inLanguage": "es",
+      "image": "https://randompicks.es/random_picks_logo.jpg",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock"
+      },
+      "sameAs": ["https://discord.gg/HSMZT6njnk"],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "1",
+        "bestRating": "5"
+      }
+    }
+    </script>
+
+    <!-- Preload fuentes críticas -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&family=Inter:wght@400;500&display=swap" />
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   </head>
   <body>
