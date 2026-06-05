@@ -1010,6 +1010,9 @@ const features = [
 </style>
 
 <script>
+  import { trackPageVisit } from '../lib/analytics';
+  trackPageVisit();
+
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobile-menu');
   hamburger?.addEventListener('click', () => {
