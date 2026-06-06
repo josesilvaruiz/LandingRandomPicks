@@ -5,41 +5,94 @@ const modes = [
   {
     icon: '🎪',
     name: 'Mini Games',
-    desc: 'Variedad de juegos en un solo servidor. Siempre hay algo nuevo con lo que reírse.',
+    nameEn: 'Mini Games',
+    desc: 'El modo principal del servidor. Variedad de juegos, risas garantizadas y siempre algo nuevo cada semana.',
+    descEn: 'The server\'s main mode. Variety of games, guaranteed fun and always something new every week.',
     tag: 'PRINCIPAL',
+    tagEn: 'MAIN',
+    detail: 'Juega con hasta 32 jugadores en modos que cambian constantemente.',
+    detailEn: 'Play with up to 32 players in constantly rotating game modes.',
   },
   {
-    icon: '💣',
+    icon: '💨',
     name: 'Bhop',
-    desc: 'Encadena saltos perfectos y sube en el ranking. ¿Tienes el nivel?',
+    nameEn: 'Bhop',
+    desc: 'Encadena saltos perfectos, mejora tu técnica y escala el ranking global del servidor.',
+    descEn: 'Chain perfect jumps, improve your technique and climb the server\'s global ranking.',
     tag: 'RANKING',
+    tagEn: 'RANKING',
+    detail: 'Rankings persistentes. Tu mejor tiempo siempre guardado.',
+    detailEn: 'Persistent rankings. Your best time always saved.',
   },
   {
     icon: '🏅',
-    name: 'Rangos',
-    desc: 'Sistema de rangos para que tu progreso siempre cuente. Escala posiciones.',
+    name: 'Sistema de Rangos',
+    nameEn: 'Rank System',
+    desc: 'Cada partida suma. Sube de rango, demuestra tu nivel y deja huella en el servidor.',
+    descEn: 'Every match counts. Rank up, prove your skill and leave your mark on the server.',
     tag: 'PROGRESO',
+    tagEn: 'PROGRESS',
+    detail: 'Múltiples rangos desde Principiante hasta Élite.',
+    detailEn: 'Multiple ranks from Beginner to Elite.',
   },
   {
     icon: '🛍️',
-    name: 'Tienda de skins',
-    desc: 'Gana créditos jugando y canjéalos por skins en la tienda del servidor.',
-    tag: 'NUEVO',
+    name: 'Tienda de Skins',
+    nameEn: 'Skin Shop',
+    desc: 'Gana créditos jugando — sin pagar — y canjéalos por skins exclusivas del servidor.',
+    descEn: 'Earn credits by playing — for free — and redeem them for exclusive server skins.',
+    tag: 'GRATIS',
+    tagEn: 'FREE',
+    detail: 'Créditos por tiempo jugado, kills y logros.',
+    detailEn: 'Credits earned by playtime, kills and achievements.',
   },
 ];
 
-const stats = [
-  { value: '¡NUEVO!', label: 'Servidor recién abierto' },
-  { value: '1', label: 'Servidor online' },
-  { value: 'FREE', label: 'Acceso gratuito' },
-  { value: 'CS2', label: 'Actualizado' },
+const faq = [
+  {
+    q: '¿El servidor es completamente gratuito?',
+    qEn: 'Is the server completely free?',
+    a: 'Sí, 100% gratis. Los créditos para la tienda de skins se ganan jugando. No hay compras dentro del juego ni ventajas de pago.',
+    aEn: 'Yes, 100% free. Credits for the skin shop are earned by playing. No in-game purchases or pay-to-win advantages.',
+  },
+  {
+    q: '¿Hay admins activos contra cheaters y toxicidad?',
+    qEn: 'Are there active admins against cheaters and toxicity?',
+    a: 'Sí. El equipo de RandomPicks monitoriza el servidor activamente. Hay un canal de reporte en Discord con respuesta rápida.',
+    aEn: 'Yes. The RandomPicks team actively monitors the server. There is a report channel on Discord with fast response.',
+  },
+  {
+    q: '¿Puedo jugar si no hablo español?',
+    qEn: 'Can I play if I don\'t speak Spanish?',
+    a: 'Totalmente. El servidor es de comunidad hispanohablante pero todos son bienvenidos. CS2 es un lenguaje universal.',
+    aEn: 'Absolutely. The server is a Spanish-speaking community but everyone is welcome. CS2 is a universal language.',
+  },
+  {
+    q: '¿Los rangos se resetean alguna vez?',
+    qEn: 'Do ranks ever reset?',
+    a: 'Los rangos no se resetean por defecto. Cualquier reset estacional se anunciará con antelación en el Discord con compensación para los jugadores activos.',
+    aEn: 'Ranks do not reset by default. Any seasonal reset will be announced in advance on Discord with compensation for active players.',
+  },
+  {
+    q: '¿Con qué frecuencia se añaden modos nuevos?',
+    qEn: 'How often are new modes added?',
+    a: 'La comunidad vota en Discord qué modos añadir. Tenemos un canal específico para propuestas y añadimos contenido de forma regular.',
+    aEn: 'The community votes on Discord for which modes to add. We have a dedicated channel for suggestions and add content regularly.',
+  },
+  {
+    q: '¿Cómo me conecto al servidor?',
+    qEn: 'How do I connect to the server?',
+    a: 'Abre CS2, activa la consola con ~ y escribe: connect cs2.randompicks.es:27015. También puedes buscar "RandomPicks" en el navegador de servidores.',
+    aEn: 'Open CS2, open the console with ~ and type: connect cs2.randompicks.es:27015. You can also search for "RandomPicks" in the server browser.',
+  },
 ];
 
-const features = [
-  { icon: '🏅', title: 'Sistema de rangos', desc: 'Tu progreso queda guardado. Sube de rango jugando al bhop y en los minigames.' },
-  { icon: '🛍️', title: 'Tienda de skins', desc: 'Gana créditos simplemente jugando y gástalos en skins dentro del servidor.' },
-  { icon: '🎪', title: 'Minigames variados', desc: 'El modo principal del servidor. Siempre hay algo diferente con lo que pasarlo bien.' },
-  { icon: '💬', title: 'Comunidad en Discord', desc: 'Canal directo con los admins. Propón modos, reporta bugs y estate al tanto de novedades.' },
+const ranks = [
+  { icon: '⬜', name: 'Principiante', nameEn: 'Beginner', color: '#7070A0' },
+  { icon: '🟩', name: 'Veterano',     nameEn: 'Veteran',   color: '#22c55e' },
+  { icon: '🟦', name: 'Experto',      nameEn: 'Expert',    color: '#3b82f6' },
+  { icon: '🟪', name: 'Maestro',      nameEn: 'Master',    color: '#a855f7' },
+  { icon: '🟧', name: 'Élite',        nameEn: 'Elite',     color: '#FF6B2B' },
 ];
 ---
 
@@ -51,19 +104,29 @@ const features = [
         <img src="/random_picks_logo.jpg" alt="RandomPicks" style="height:44px;width:72px;object-fit:cover;object-position:center;border-radius:8px;display:block;" />
       </a>
       <ul class="nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#modos">Modos</a></li>
-        <li><a href="#features">Features</a></li>
+        <li><a href="#" data-i18n="nav-home">Home</a></li>
+        <li><a href="#modos" data-i18n="nav-modos">Modos</a></li>
+        <li><a href="#progresion" data-i18n="nav-progression">Progresión</a></li>
+        <li><a href="#faq" data-i18n="nav-faq">FAQ</a></li>
         <li><a href="https://discord.gg/HSMZT6njnk" target="_blank" rel="noopener" class="nav-discord">Discord</a></li>
       </ul>
-      <button class="hamburger" id="hamburger" aria-label="Menú">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="nav-right">
+        <button id="lang-toggle" class="lang-toggle" aria-label="Switch to English" title="Switch to English">
+          <span class="lang-globe" aria-hidden="true">🌐</span>
+          <span class="lang-es lang-active" id="lang-es">ES</span>
+          <span class="lang-sep" aria-hidden="true">|</span>
+          <span class="lang-en lang-inactive" id="lang-en">EN</span>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menú">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
     <div class="mobile-menu" id="mobile-menu">
-      <a href="#">Home</a>
-      <a href="#modos">Modos</a>
-      <a href="#features">Features</a>
+      <a href="#" data-i18n="nav-home">Home</a>
+      <a href="#modos" data-i18n="nav-modos">Modos</a>
+      <a href="#progresion" data-i18n="nav-progression">Progresión</a>
+      <a href="#faq" data-i18n="nav-faq">FAQ</a>
       <a href="https://discord.gg/HSMZT6njnk" target="_blank" rel="noopener">Discord</a>
     </div>
   </nav>
@@ -81,47 +144,50 @@ const features = [
     <div class="hero-content">
       <div class="badge-pill">
         <span class="dot-pulse"></span>
-        SERVIDORES EN LÍNEA · CS2
+        <span data-i18n="hero-badge">ROL DE FUNDADOR DISPONIBLE — PLAZAS LIMITADAS</span>
       </div>
 
-      <h1 class="hero-title">
-        Servidor CS2 de<br />
+      <h1 class="hero-title" data-i18n-html="hero-title">
+        El servidor CS2 de la<br />
         <span class="title-highlight">
-          <span class="title-text">minigames</span>
+          <span class="title-text">comunidad hispanohablante</span>
           <span class="title-underline"></span>
-        </span><br />
-        en español
+        </span>
       </h1>
 
-      <p class="hero-sub">
-        Minigames, Bhop con rangos y tienda de skins para CS2.
-        Servidor gratuito, comunidad española. Únete desde el primer día.
+      <p class="hero-sub" data-i18n="hero-sub">
+        Minigames, Bhop con rankings y tienda de skins — todo gratis. Arrancamos ahora y los primeros que entren consiguen el rol de fundador en Discord.
       </p>
 
-      <div class="hero-actions">
-        <a href="https://discord.gg/HSMZT6njnk" target="_blank" rel="noopener" class="btn-discord">
-          <svg width="22" height="22" viewBox="0 0 71 55" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M60.1045 4.8978C55.5792 2.8214 50.7265 1.2916 45.6527 0.41542C45.5603 0.39851 45.468 0.440808 45.4204 0.525289C44.7963 1.6353 44.105 3.0834 43.6209 4.2216C38.1637 3.4046 32.7345 3.4046 27.3892 4.2216C26.905 3.0581 26.1886 1.6353 25.5617 0.525289C25.5141 0.443589 25.4218 0.401291 25.3294 0.41542C20.2584 1.2888 15.4057 2.8186 10.8776 4.8978C10.8384 4.9147 10.8048 4.9429 10.7825 4.9795C1.57795 18.7309 -0.943561 32.1443 0.293408 45.3914C0.299005 45.4562 0.335386 45.5182 0.385761 45.5576C6.45866 50.0174 12.3413 52.7249 18.1147 54.5195C18.2071 54.5477 18.305 54.5139 18.3638 54.4378C19.7295 52.5728 20.9469 50.6063 21.9907 48.5383C22.0523 48.4172 21.9935 48.2735 21.8676 48.2256C19.9366 47.4931 18.0979 46.6 16.3292 45.5858C16.1893 45.5041 16.1781 45.304 16.3068 45.2082C16.679 44.9293 17.0513 44.6391 17.4067 44.3461C17.471 44.2926 17.5606 44.2813 17.6362 44.3151C29.2558 49.6202 41.8354 49.6202 53.3179 44.3151C53.3935 44.2785 53.4831 44.2898 53.5502 44.3433C53.9057 44.6363 54.2779 44.9293 54.6529 45.2082C54.7816 45.304 54.7732 45.5041 54.6333 45.5858C52.8646 46.6197 51.0259 47.4931 49.0921 48.2228C48.9662 48.2707 48.9102 48.4172 48.9718 48.5383C50.038 50.6034 51.2554 52.5699 52.5959 54.435C52.6519 54.5139 52.7526 54.5477 52.845 54.5195C58.6464 52.7249 64.529 50.0174 70.6019 45.5576C70.6551 45.5182 70.6887 45.459 70.6943 45.3942C72.1747 30.0791 68.2147 16.7757 60.1968 4.9823C60.1772 4.9429 60.1437 4.9147 60.1045 4.8978Z" fill="currentColor"/></svg>
-          Únete al Discord
-        </a>
-        <a href="#modos" class="btn-outline">
-          Ver modos de juego
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-        </a>
-      </div>
-
-      <div class="hero-meta">
-        <div class="meta-item">
-          <span class="meta-dot"></span>
-          <span>Servidor recién abierto — sé de los primeros</span>
+      <div class="hero-social-proof">
+        <div class="sp-item">
+          <span class="sp-dot"></span>
+          <span data-i18n="sp-server">Servidor activo 24/7</span>
+        </div>
+        <span class="sp-sep">·</span>
+        <div class="sp-item">
+          <span data-i18n="sp-community">Comunidad hispanohablante</span>
+        </div>
+        <span class="sp-sep">·</span>
+        <div class="sp-item">
+          <span data-i18n="sp-welcome">Everyone welcome</span>
         </div>
       </div>
 
+      <div class="hero-cta-block">
+        <a href="https://discord.gg/HSMZT6njnk" target="_blank" rel="noopener" class="btn-primary">
+          <svg width="22" height="22" viewBox="0 0 71 55" fill="none"><path d="M60.1045 4.8978C55.5792 2.8214 50.7265 1.2916 45.6527 0.41542C45.5603 0.39851 45.468 0.440808 45.4204 0.525289C44.7963 1.6353 44.105 3.0834 43.6209 4.2216C38.1637 3.4046 32.7345 3.4046 27.3892 4.2216C26.905 3.0581 26.1886 1.6353 25.5617 0.525289C25.5141 0.443589 25.4218 0.401291 25.3294 0.41542C20.2584 1.2888 15.4057 2.8186 10.8776 4.8978C10.8384 4.9147 10.8048 4.9429 10.7825 4.9795C1.57795 18.7309 -0.943561 32.1443 0.293408 45.3914C0.299005 45.4562 0.335386 45.5182 0.385761 45.5576C6.45866 50.0174 12.3413 52.7249 18.1147 54.5195C18.2071 54.5477 18.305 54.5139 18.3638 54.4378C19.7295 52.5728 20.9469 50.6063 21.9907 48.5383C22.0523 48.4172 21.9935 48.2735 21.8676 48.2256C19.9366 47.4931 18.0979 46.6 16.3292 45.5858C16.1893 45.5041 16.1781 45.304 16.3068 45.2082C16.679 44.9293 17.0513 44.6391 17.4067 44.3461C17.471 44.2926 17.5606 44.2813 17.6362 44.3151C29.2558 49.6202 41.8354 49.6202 53.3179 44.3151C53.3935 44.2785 53.4831 44.2898 53.5502 44.3433C53.9057 44.6363 54.2779 44.9293 54.6529 45.2082C54.7816 45.304 54.7732 45.5041 54.6333 45.5858C52.8646 46.6197 51.0259 47.4931 49.0921 48.2228C48.9662 48.2707 48.9102 48.4172 48.9718 48.5383C50.038 50.6034 51.2554 52.5699 52.5959 54.435C52.6519 54.5139 52.7526 54.5477 52.845 54.5195C58.6464 52.7249 64.529 50.0174 70.6019 45.5576C70.6551 45.5182 70.6887 45.459 70.6943 45.3942C72.1747 30.0791 68.2147 16.7757 60.1968 4.9823C60.1772 4.9429 60.1437 4.9147 60.1045 4.8978Z" fill="currentColor"/></svg>
+          <span data-i18n="btn-discord">Entrar al Discord — consigue el rol de fundador</span>
+        </a>
+        <div class="btn-hint" data-i18n="btn-hint">Gratis · Sin registro previo · Rol de fundador para los primeros</div>
+      </div>
+
       <div class="server-ip" id="server-ip">
-        <span class="ip-label">CONECTAR</span>
+        <span class="ip-label" data-i18n="ip-label">CONECTAR AHORA</span>
         <code class="ip-text">cs2.randompicks.es:27015</code>
         <button class="ip-copy" id="copy-btn" title="Copiar IP">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          <span id="copy-label">Copiar</span>
+          <span id="copy-label" data-i18n="copy-label">Copiar IP</span>
         </button>
       </div>
     </div>
@@ -145,21 +211,40 @@ const features = [
     </div>
   </section>
 
-  <!-- STATS TICKER -->
-  <div class="ticker-wrap" id="stats">
-    <div class="ticker">
-      {stats.map(s => (
-        <div class="ticker-item">
-          <span class="ticker-val">{s.value}</span>
-          <span class="ticker-label">{s.label}</span>
+  <!-- VALUE STRIP -->
+  <div class="value-strip">
+    <div class="value-strip-inner">
+      <div class="vs-item">
+        <span class="vs-icon">🎮</span>
+        <div>
+          <div class="vs-title" data-i18n="vs-0-title">Minigames & Bhop</div>
+          <div class="vs-sub" data-i18n="vs-0-sub">Modos que rotan cada semana</div>
         </div>
-      ))}
-      {stats.map(s => (
-        <div class="ticker-item" aria-hidden="true">
-          <span class="ticker-val">{s.value}</span>
-          <span class="ticker-label">{s.label}</span>
+      </div>
+      <div class="vs-divider"></div>
+      <div class="vs-item">
+        <span class="vs-icon">🏅</span>
+        <div>
+          <div class="vs-title" data-i18n="vs-1-title">Rankings reales</div>
+          <div class="vs-sub" data-i18n="vs-1-sub">Tu progreso nunca se pierde</div>
         </div>
-      ))}
+      </div>
+      <div class="vs-divider"></div>
+      <div class="vs-item">
+        <span class="vs-icon">🛍️</span>
+        <div>
+          <div class="vs-title" data-i18n="vs-2-title">Skins por jugar</div>
+          <div class="vs-sub" data-i18n="vs-2-sub">Sin pagar. Solo jugando.</div>
+        </div>
+      </div>
+      <div class="vs-divider"></div>
+      <div class="vs-item">
+        <span class="vs-icon">💬</span>
+        <div>
+          <div class="vs-title" data-i18n="vs-3-title">Admins activos</div>
+          <div class="vs-sub" data-i18n="vs-3-sub">Comunidad sin toxicidad</div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -167,18 +252,18 @@ const features = [
   <section class="section" id="modos">
     <div class="container">
       <div class="section-header">
-        <div class="section-tag">GAME MODES</div>
-        <h2 class="section-title">Modos de juego en CS2</h2>
-        <p class="section-sub">Minigames, Bhop y más en un servidor CS2 gratuito para la comunidad española.</p>
+        <div class="section-tag" data-i18n="modes-tag">GAME MODES</div>
+        <h2 class="section-title" data-i18n="modes-title">Todo lo que puedes jugar</h2>
+        <p class="section-sub" data-i18n="modes-sub">Cuatro modos para cuatro tipos de jugador. Todos en el mismo servidor, todos gratis.</p>
       </div>
-
       <div class="modes-grid">
         {modes.map((m, i) => (
           <div class="mode-card" style={`animation-delay: ${i * 0.08}s`}>
-            <div class="mode-tag">{m.tag}</div>
+            <div class="mode-tag" data-i18n={`mode-${i}-tag`}>{m.tag}</div>
             <div class="mode-icon">{m.icon}</div>
-            <h3 class="mode-name">{m.name}</h3>
-            <p class="mode-desc">{m.desc}</p>
+            <h3 class="mode-name" data-i18n={`mode-${i}-name`}>{m.name}</h3>
+            <p class="mode-desc" data-i18n={`mode-${i}-desc`}>{m.desc}</p>
+            <p class="mode-detail" data-i18n={`mode-${i}-detail`}>{m.detail}</p>
             <div class="mode-arrow">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
             </div>
@@ -188,24 +273,87 @@ const features = [
     </div>
   </section>
 
-  <!-- FEATURES -->
-  <section class="section section-alt" id="features">
+  <!-- PROGRESIÓN -->
+  <section class="section section-alt" id="progresion">
     <div class="container">
       <div class="section-header">
-        <div class="section-tag">POR QUÉ ELEGIRNOS</div>
-        <h2 class="section-title">El mejor servidor CS2 para la comunidad</h2>
-        <p class="section-sub">Rangos, tienda de skins y minigames en un servidor CS2 gratis y en español.</p>
+        <div class="section-tag" data-i18n="prog-tag">SISTEMA DE PROGRESIÓN</div>
+        <h2 class="section-title" data-i18n="prog-title">Cada partida tiene valor</h2>
+        <p class="section-sub" data-i18n="prog-sub">Rankea, gana créditos y personaliza tu experiencia. Todo por jugar.</p>
       </div>
 
-      <div class="features-grid">
-        {features.map((f, i) => (
-          <div class="feature-card" style={`animation-delay: ${i * 0.1}s`}>
-            <div class="feature-icon-wrap">
-              <span class="feature-icon">{f.icon}</span>
+      <div class="prog-grid">
+        <!-- RANKS -->
+        <div class="prog-card">
+          <div class="prog-card-header">
+            <span class="prog-card-icon">🏅</span>
+            <h3 class="prog-card-title" data-i18n="prog-ranks-title">Sistema de Rangos</h3>
+          </div>
+          <p class="prog-card-desc" data-i18n="prog-ranks-desc">Cada partida en Bhop y Minigames suma puntos. Sube de rango y demuestra tu nivel frente a la comunidad.</p>
+          <div class="rank-ladder">
+            {ranks.map((r, i) => (
+              <div class="rank-item" style={`animation-delay: ${i * 0.1}s`}>
+                <span class="rank-icon">{r.icon}</span>
+                <span class="rank-name" data-i18n={`rank-${i}`} style={`color: ${r.color}`}>{r.name}</span>
+                {i === ranks.length - 1 && <span class="rank-badge" data-i18n="rank-top">TOP</span>}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- SKINS -->
+        <div class="prog-card">
+          <div class="prog-card-header">
+            <span class="prog-card-icon">🛍️</span>
+            <h3 class="prog-card-title" data-i18n="prog-skins-title">Tienda de Skins</h3>
+          </div>
+          <p class="prog-card-desc" data-i18n="prog-skins-desc">Gana créditos jugando y canjéalos por skins. Los jugadores VIP acceden a skins exclusivas y beneficios adicionales.</p>
+          <div class="credits-flow">
+            <div class="cf-step">
+              <div class="cf-icon">🎮</div>
+              <div class="cf-label" data-i18n="cf-0">Juega partidas</div>
             </div>
-            <div class="feature-body">
-              <h3 class="feature-title">{f.title}</h3>
-              <p class="feature-desc">{f.desc}</p>
+            <div class="cf-arrow">→</div>
+            <div class="cf-step">
+              <div class="cf-icon">💰</div>
+              <div class="cf-label" data-i18n="cf-1">Gana créditos</div>
+            </div>
+            <div class="cf-arrow">→</div>
+            <div class="cf-step">
+              <div class="cf-icon">🎨</div>
+              <div class="cf-label" data-i18n="cf-2">Consigue skins</div>
+            </div>
+          </div>
+          <div class="credits-sources">
+            <div class="cs-item"><span>✓</span> <span data-i18n="cs-0">Tiempo de juego</span></div>
+            <div class="cs-item"><span>✓</span> <span data-i18n="cs-1">Kills y asistencias</span></div>
+            <div class="cs-item"><span>✓</span> <span data-i18n="cs-2">Logros del servidor</span></div>
+            <div class="cs-item cs-vip"><span>⭐</span> <span data-i18n="cs-3">VIP — skins exclusivas</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag" data-i18n="faq-tag">FAQ</div>
+        <h2 class="section-title" data-i18n="faq-title">Preguntas frecuentes</h2>
+        <p class="section-sub" data-i18n="faq-sub">Todo lo que necesitas saber antes de conectarte.</p>
+      </div>
+      <div class="faq-grid">
+        {faq.map((item, i) => (
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" data-faq={i}>
+              <span data-i18n={`faq-${i}-q`}>{item.q}</span>
+              <span class="faq-chevron" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </button>
+            <div class="faq-answer" id={`faq-answer-${i}`}>
+              <p data-i18n={`faq-${i}-a`}>{item.a}</p>
             </div>
           </div>
         ))}
@@ -223,23 +371,24 @@ const features = [
         </div>
         <div class="discord-content">
           <div class="discord-logo-wrap">
-            <svg class="discord-logo-svg" viewBox="0 0 71 55" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M60.1045 4.8978C55.5792 2.8214 50.7265 1.2916 45.6527 0.41542C45.5603 0.39851 45.468 0.440808 45.4204 0.525289C44.7963 1.6353 44.105 3.0834 43.6209 4.2216C38.1637 3.4046 32.7345 3.4046 27.3892 4.2216C26.905 3.0581 26.1886 1.6353 25.5617 0.525289C25.5141 0.443589 25.4218 0.401291 25.3294 0.41542C20.2584 1.2888 15.4057 2.8186 10.8776 4.8978C10.8384 4.9147 10.8048 4.9429 10.7825 4.9795C1.57795 18.7309 -0.943561 32.1443 0.293408 45.3914C0.299005 45.4562 0.335386 45.5182 0.385761 45.5576C6.45866 50.0174 12.3413 52.7249 18.1147 54.5195C18.2071 54.5477 18.305 54.5139 18.3638 54.4378C19.7295 52.5728 20.9469 50.6063 21.9907 48.5383C22.0523 48.4172 21.9935 48.2735 21.8676 48.2256C19.9366 47.4931 18.0979 46.6 16.3292 45.5858C16.1893 45.5041 16.1781 45.304 16.3068 45.2082C16.679 44.9293 17.0513 44.6391 17.4067 44.3461C17.471 44.2926 17.5606 44.2813 17.6362 44.3151C29.2558 49.6202 41.8354 49.6202 53.3179 44.3151C53.3935 44.2785 53.4831 44.2898 53.5502 44.3433C53.9057 44.6363 54.2779 44.9293 54.6529 45.2082C54.7816 45.304 54.7732 45.5041 54.6333 45.5858C52.8646 46.6197 51.0259 47.4931 49.0921 48.2228C48.9662 48.2707 48.9102 48.4172 48.9718 48.5383C50.038 50.6034 51.2554 52.5699 52.5959 54.435C52.6519 54.5139 52.7526 54.5477 52.845 54.5195C58.6464 52.7249 64.529 50.0174 70.6019 45.5576C70.6551 45.5182 70.6887 45.459 70.6943 45.3942C72.1747 30.0791 68.2147 16.7757 60.1968 4.9823C60.1772 4.9429 60.1437 4.9147 60.1045 4.8978Z" fill="currentColor"/></svg>
+            <svg class="discord-logo-svg" viewBox="0 0 71 55" fill="none"><path d="M60.1045 4.8978C55.5792 2.8214 50.7265 1.2916 45.6527 0.41542C45.5603 0.39851 45.468 0.440808 45.4204 0.525289C44.7963 1.6353 44.105 3.0834 43.6209 4.2216C38.1637 3.4046 32.7345 3.4046 27.3892 4.2216C26.905 3.0581 26.1886 1.6353 25.5617 0.525289C25.5141 0.443589 25.4218 0.401291 25.3294 0.41542C20.2584 1.2888 15.4057 2.8186 10.8776 4.8978C10.8384 4.9147 10.8048 4.9429 10.7825 4.9795C1.57795 18.7309 -0.943561 32.1443 0.293408 45.3914C0.299005 45.4562 0.335386 45.5182 0.385761 45.5576C6.45866 50.0174 12.3413 52.7249 18.1147 54.5195C18.2071 54.5477 18.305 54.5139 18.3638 54.4378C19.7295 52.5728 20.9469 50.6063 21.9907 48.5383C22.0523 48.4172 21.9935 48.2735 21.8676 48.2256C19.9366 47.4931 18.0979 46.6 16.3292 45.5858C16.1893 45.5041 16.1781 45.304 16.3068 45.2082C16.679 44.9293 17.0513 44.6391 17.4067 44.3461C17.471 44.2926 17.5606 44.2813 17.6362 44.3151C29.2558 49.6202 41.8354 49.6202 53.3179 44.3151C53.3935 44.2785 53.4831 44.2898 53.5502 44.3433C53.9057 44.6363 54.2779 44.9293 54.6529 45.2082C54.7816 45.304 54.7732 45.5041 54.6333 45.5858C52.8646 46.6197 51.0259 47.4931 49.0921 48.2228C48.9662 48.2707 48.9102 48.4172 48.9718 48.5383C50.038 50.6034 51.2554 52.5699 52.5959 54.435C52.6519 54.5139 52.7526 54.5477 52.845 54.5195C58.6464 52.7249 64.529 50.0174 70.6019 45.5576C70.6551 45.5182 70.6887 45.459 70.6943 45.3942C72.1747 30.0791 68.2147 16.7757 60.1968 4.9823C60.1772 4.9429 60.1437 4.9147 60.1045 4.8978Z" fill="currentColor"/></svg>
           </div>
-          <h2 class="discord-title">Únete a la comunidad CS2</h2>
-          <p class="discord-sub">
-            Estamos empezando y buscamos los primeros jugadores de CS2. Únete ahora al Discord,
-            ayuda a construir la comunidad española y consigue el rol de fundador.
+          <div class="founder-badge" data-i18n="founder-badge">🎖️ ROL DE FUNDADOR — PLAZAS LIMITADAS</div>
+          <h2 class="discord-title" data-i18n="discord-title">Entra antes de que acabe el lanzamiento</h2>
+          <p class="discord-sub" data-i18n="discord-sub">
+            El rol de fundador es exclusivo para quienes entran durante el lanzamiento. Tendrás voz en los modos que añadimos, acceso a canales privados y el reconocimiento permanente de haber estado desde el inicio.
           </p>
           <div class="discord-perks">
-            <div class="perk"><span>✓</span> Rol de fundador exclusivo</div>
-            <div class="perk"><span>✓</span> Influye en los modos que añadimos</div>
-            <div class="perk"><span>✓</span> Contacto directo con los admins</div>
-            <div class="perk"><span>✓</span> Acceso gratuito a todos los modos</div>
+            <div class="perk"><span aria-hidden="true">✓</span> <span data-i18n="perk-0">Rol de fundador permanente</span></div>
+            <div class="perk"><span aria-hidden="true">✓</span> <span data-i18n="perk-1">Voto en los modos que añadimos</span></div>
+            <div class="perk"><span aria-hidden="true">✓</span> <span data-i18n="perk-2">Contacto directo con los admins</span></div>
+            <div class="perk"><span aria-hidden="true">✓</span> <span data-i18n="perk-3">Acceso a canales exclusivos</span></div>
           </div>
           <a href="https://discord.gg/HSMZT6njnk" target="_blank" rel="noopener" class="btn-discord-big">
-            <svg width="24" height="24" viewBox="0 0 71 55" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M60.1045 4.8978C55.5792 2.8214 50.7265 1.2916 45.6527 0.41542C45.5603 0.39851 45.468 0.440808 45.4204 0.525289C44.7963 1.6353 44.105 3.0834 43.6209 4.2216C38.1637 3.4046 32.7345 3.4046 27.3892 4.2216C26.905 3.0581 26.1886 1.6353 25.5617 0.525289C25.5141 0.443589 25.4218 0.401291 25.3294 0.41542C20.2584 1.2888 15.4057 2.8186 10.8776 4.8978C10.8384 4.9147 10.8048 4.9429 10.7825 4.9795C1.57795 18.7309 -0.943561 32.1443 0.293408 45.3914C0.299005 45.4562 0.335386 45.5182 0.385761 45.5576C6.45866 50.0174 12.3413 52.7249 18.1147 54.5195C18.2071 54.5477 18.305 54.5139 18.3638 54.4378C19.7295 52.5728 20.9469 50.6063 21.9907 48.5383C22.0523 48.4172 21.9935 48.2735 21.8676 48.2256C19.9366 47.4931 18.0979 46.6 16.3292 45.5858C16.1893 45.5041 16.1781 45.304 16.3068 45.2082C16.679 44.9293 17.0513 44.6391 17.4067 44.3461C17.471 44.2926 17.5606 44.2813 17.6362 44.3151C29.2558 49.6202 41.8354 49.6202 53.3179 44.3151C53.3935 44.2785 53.4831 44.2898 53.5502 44.3433C53.9057 44.6363 54.2779 44.9293 54.6529 45.2082C54.7816 45.304 54.7732 45.5041 54.6333 45.5858C52.8646 46.6197 51.0259 47.4931 49.0921 48.2228C48.9662 48.2707 48.9102 48.4172 48.9718 48.5383C50.038 50.6034 51.2554 52.5699 52.5959 54.435C52.6519 54.5139 52.7526 54.5477 52.845 54.5195C58.6464 52.7249 64.529 50.0174 70.6019 45.5576C70.6551 45.5182 70.6887 45.459 70.6943 45.3942C72.1747 30.0791 68.2147 16.7757 60.1968 4.9823C60.1772 4.9429 60.1437 4.9147 60.1045 4.8978Z" fill="currentColor"/></svg>
-            Entrar al servidor de Discord
+            <svg width="24" height="24" viewBox="0 0 71 55" fill="none"><path d="M60.1045 4.8978C55.5792 2.8214 50.7265 1.2916 45.6527 0.41542C45.5603 0.39851 45.468 0.440808 45.4204 0.525289C44.7963 1.6353 44.105 3.0834 43.6209 4.2216C38.1637 3.4046 32.7345 3.4046 27.3892 4.2216C26.905 3.0581 26.1886 1.6353 25.5617 0.525289C25.5141 0.443589 25.4218 0.401291 25.3294 0.41542C20.2584 1.2888 15.4057 2.8186 10.8776 4.8978C10.8384 4.9147 10.8048 4.9429 10.7825 4.9795C1.57795 18.7309 -0.943561 32.1443 0.293408 45.3914C0.299005 45.4562 0.335386 45.5182 0.385761 45.5576C6.45866 50.0174 12.3413 52.7249 18.1147 54.5195C18.2071 54.5477 18.305 54.5139 18.3638 54.4378C19.7295 52.5728 20.9469 50.6063 21.9907 48.5383C22.0523 48.4172 21.9935 48.2735 21.8676 48.2256C19.9366 47.4931 18.0979 46.6 16.3292 45.5858C16.1893 45.5041 16.1781 45.304 16.3068 45.2082C16.679 44.9293 17.0513 44.6391 17.4067 44.3461C17.471 44.2926 17.5606 44.2813 17.6362 44.3151C29.2558 49.6202 41.8354 49.6202 53.3179 44.3151C53.3935 44.2785 53.4831 44.2898 53.5502 44.3433C53.9057 44.6363 54.2779 44.9293 54.6529 45.2082C54.7816 45.304 54.7732 45.5041 54.6333 45.5858C52.8646 46.6197 51.0259 47.4931 49.0921 48.2228C48.9662 48.2707 48.9102 48.4172 48.9718 48.5383C50.038 50.6034 51.2554 52.5699 52.5959 54.435C52.6519 54.5139 52.7526 54.5477 52.845 54.5195C58.6464 52.7249 64.529 50.0174 70.6019 45.5576C70.6551 45.5182 70.6887 45.459 70.6943 45.3942C72.1747 30.0791 68.2147 16.7757 60.1968 4.9823C60.1772 4.9429 60.1437 4.9147 60.1045 4.8978Z" fill="currentColor"/></svg>
+            <span data-i18n="btn-discord-big">Entrar al Discord y conseguir el rol</span>
           </a>
+          <p class="discord-footnote" data-i18n="discord-footnote">Gratis · Sin registro previo · El rol de fundador no estará disponible después del lanzamiento</p>
         </div>
       </div>
     </div>
@@ -249,10 +398,10 @@ const features = [
   <footer>
     <div class="container">
       <div class="footer-inner">
-        <img src="/random_picks_logo.jpg" alt="RandomPicks" style="height:36px;width:36px;object-fit:cover;object-position:center;border-radius:6px;display:block;opacity:0.85;" />
-        <p class="footer-text">Servidor de minigames para CS2 · No afiliado con Valve Corporation</p>
+        <p class="footer-text" data-i18n="footer-text">Servidor de minigames para CS2 · No afiliado con Valve Corporation</p>
         <div class="footer-links">
-          <a href="#">Home</a>
+          <a href="#" data-i18n="nav-home">Home</a>
+          <a href="#faq">FAQ</a>
           <a href="https://discord.gg/HSMZT6njnk" target="_blank" rel="noopener">Discord</a>
           <span class="footer-ip">cs2.randompicks.es:27015</span>
         </div>
@@ -260,810 +409,513 @@ const features = [
     </div>
   </footer>
 
+  <!-- ANALYTICS -->
   <script define:vars={{ analyticsKey: import.meta.env.PUBLIC_ANALYTICS_KEY }}>
     (async () => {
+      if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') return;
       const ENDPOINT = "https://randompicks.es/panel/api/analytics/visit";
       const start = Date.now();
-
-      const buildPayload = (timeOnPageSeconds) => ({
-        path: window.location.pathname,
-        language: navigator.language,
-        screenWidth: window.screen.width,
-        screenHeight: window.screen.height,
-        timeOnPageSeconds,
-      });
-
-      const sendVisit = async (timeOnPageSeconds) => {
-        try {
-          await fetch(ENDPOINT, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "X-Analytics-Key": analyticsKey,
-            },
-            body: JSON.stringify(buildPayload(timeOnPageSeconds)),
-            keepalive: true,
-          });
-        } catch (_) {}
-      };
-
-      window.addEventListener("visibilitychange", () => {
-        if (document.visibilityState === "hidden") {
-          const seconds = Math.round((Date.now() - start) / 1000);
-          navigator.sendBeacon
-            ? navigator.sendBeacon(ENDPOINT, new Blob([JSON.stringify(buildPayload(seconds))], { type: "application/json" }))
-            : sendVisit(seconds);
-        }
-      });
-
+      const buildPayload = (t) => ({ path: window.location.pathname, language: navigator.language, screenWidth: window.screen.width, screenHeight: window.screen.height, timeOnPageSeconds: t });
+      const sendVisit = async (t) => { try { await fetch(ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", "X-Analytics-Key": analyticsKey }, body: JSON.stringify(buildPayload(t)), keepalive: true }); } catch (_) {} };
+      window.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden") { const s = Math.round((Date.now() - start) / 1000); navigator.sendBeacon ? navigator.sendBeacon(ENDPOINT, new Blob([JSON.stringify(buildPayload(s))], { type: "application/json" })) : sendVisit(s); } });
       await sendVisit(null);
     })();
+  </script>
+
+  <!-- UI + I18N -->
+  <script is:inline>
+    var t = {
+      es: {
+        'nav-home': 'Home', 'nav-modos': 'Modos', 'nav-progression': 'Progresión', 'nav-faq': 'FAQ',
+        'hero-badge': 'ROL DE FUNDADOR DISPONIBLE — PLAZAS LIMITADAS',
+        'hero-title': 'El servidor CS2 de la<br /><span class="title-highlight"><span class="title-text">comunidad hispanohablante</span><span class="title-underline"></span></span>',
+        'hero-sub': 'Minigames, Bhop con rankings y tienda de skins — todo gratis. Arrancamos ahora y los primeros que entren consiguen el rol de fundador en Discord.',
+        'sp-server': 'Servidor activo 24/7', 'sp-community': 'Comunidad hispanohablante', 'sp-welcome': 'Everyone welcome',
+        'btn-discord': 'Entrar al Discord — consigue el rol de fundador',
+        'btn-hint': 'Gratis · Sin registro previo · Rol de fundador para los primeros',
+        'ip-label': 'CONECTAR AHORA', 'copy-label': 'Copiar IP',
+        'vs-0-title': 'Minigames & Bhop', 'vs-0-sub': 'Modos que rotan cada semana',
+        'vs-1-title': 'Rankings reales', 'vs-1-sub': 'Tu progreso nunca se pierde',
+        'vs-2-title': 'Skins por jugar', 'vs-2-sub': 'Sin pagar. Solo jugando.',
+        'vs-3-title': 'Admins activos', 'vs-3-sub': 'Comunidad sin toxicidad',
+        'modes-tag': 'GAME MODES', 'modes-title': 'Todo lo que puedes jugar',
+        'modes-sub': 'Cuatro modos para cuatro tipos de jugador. Todos en el mismo servidor, todos gratis.',
+        'mode-0-tag': 'PRINCIPAL', 'mode-0-name': 'Mini Games',
+        'mode-0-desc': 'El modo principal del servidor. Variedad de juegos, risas garantizadas y siempre algo nuevo cada semana.',
+        'mode-0-detail': 'Juega con hasta 32 jugadores en modos que cambian constantemente.',
+        'mode-1-tag': 'RANKING', 'mode-1-name': 'Bhop',
+        'mode-1-desc': 'Encadena saltos perfectos, mejora tu técnica y escala el ranking global del servidor.',
+        'mode-1-detail': 'Rankings persistentes. Tu mejor tiempo siempre guardado.',
+        'mode-2-tag': 'PROGRESO', 'mode-2-name': 'Sistema de Rangos',
+        'mode-2-desc': 'Cada partida suma. Sube de rango, demuestra tu nivel y deja huella en el servidor.',
+        'mode-2-detail': 'Múltiples rangos desde Principiante hasta Élite.',
+        'mode-3-tag': 'GRATIS', 'mode-3-name': 'Tienda de Skins',
+        'mode-3-desc': 'Gana créditos jugando — sin pagar — y canjéalos por skins exclusivas del servidor.',
+        'mode-3-detail': 'Créditos por tiempo jugado, kills y logros.',
+        'prog-tag': 'SISTEMA DE PROGRESIÓN', 'prog-title': 'Cada partida tiene valor',
+        'prog-sub': 'Rankea, gana créditos y personaliza tu experiencia. Todo por jugar.',
+        'prog-ranks-title': 'Sistema de Rangos',
+        'prog-ranks-desc': 'Cada partida en Bhop y Minigames suma puntos. Sube de rango y demuestra tu nivel frente a la comunidad.',
+        'rank-0': 'Principiante', 'rank-1': 'Veterano', 'rank-2': 'Experto', 'rank-3': 'Maestro', 'rank-4': 'Élite',
+        'rank-top': 'TOP',
+        'prog-skins-title': 'Tienda de Skins',
+        'prog-skins-desc': 'Gana créditos jugando y canjéalos por skins. Los jugadores VIP acceden a skins exclusivas y beneficios adicionales.',
+        'cf-0': 'Juega partidas', 'cf-1': 'Gana créditos', 'cf-2': 'Consigue skins',
+        'cs-0': 'Tiempo de juego', 'cs-1': 'Kills y asistencias', 'cs-2': 'Logros del servidor', 'cs-3': 'VIP — skins exclusivas',
+        'faq-tag': 'FAQ', 'faq-title': 'Preguntas frecuentes',
+        'faq-sub': 'Todo lo que necesitas saber antes de conectarte.',
+        'faq-0-q': '¿El servidor es completamente gratuito?',
+        'faq-0-a': 'Sí, 100% gratis. Los créditos para la tienda de skins se ganan jugando. No hay compras dentro del juego ni ventajas de pago.',
+        'faq-1-q': '¿Hay admins activos contra cheaters y toxicidad?',
+        'faq-1-a': 'Sí. El equipo de RandomPicks monitoriza el servidor activamente. Hay un canal de reporte en Discord con respuesta rápida.',
+        'faq-2-q': '¿Puedo jugar si no hablo español?',
+        'faq-2-a': 'Totalmente. El servidor es de comunidad hispanohablante pero todos son bienvenidos. CS2 es un lenguaje universal.',
+        'faq-3-q': '¿Los rangos se resetean alguna vez?',
+        'faq-3-a': 'Los rangos no se resetean por defecto. Cualquier reset estacional se anunciará con antelación en Discord con compensación para los jugadores activos.',
+        'faq-4-q': '¿Con qué frecuencia se añaden modos nuevos?',
+        'faq-4-a': 'La comunidad vota en Discord qué modos añadir. Tenemos un canal específico para propuestas y añadimos contenido de forma regular.',
+        'faq-5-q': '¿Cómo me conecto al servidor?',
+        'faq-5-a': 'Abre CS2, activa la consola con ~ y escribe: connect cs2.randompicks.es:27015. También puedes buscar "RandomPicks" en el navegador de servidores.',
+        'founder-badge': '🎖️ ROL DE FUNDADOR — PLAZAS LIMITADAS',
+        'discord-title': 'Entra antes de que acabe el lanzamiento',
+        'discord-sub': 'El rol de fundador es exclusivo para quienes entran durante el lanzamiento. Tendrás voz en los modos que añadimos, acceso a canales privados y el reconocimiento permanente de haber estado desde el inicio.',
+        'perk-0': 'Rol de fundador permanente', 'perk-1': 'Voto en los modos que añadimos',
+        'perk-2': 'Contacto directo con los admins', 'perk-3': 'Acceso a canales exclusivos',
+        'btn-discord-big': 'Entrar al Discord y conseguir el rol',
+        'discord-footnote': 'Gratis · Sin registro previo · El rol de fundador no estará disponible después del lanzamiento',
+        'footer-text': 'Servidor de minigames para CS2 · No afiliado con Valve Corporation',
+      },
+      en: {
+        'nav-home': 'Home', 'nav-modos': 'Modes', 'nav-progression': 'Progression', 'nav-faq': 'FAQ',
+        'hero-badge': 'FOUNDER ROLE AVAILABLE — LIMITED SPOTS',
+        'hero-title': 'The CS2 server for the<br /><span class="title-highlight"><span class="title-text">Spanish-speaking community</span><span class="title-underline"></span></span>',
+        'hero-sub': 'Minigames, Bhop with rankings and skin shop — all free. We just launched and the first to join get the founder role on Discord.',
+        'sp-server': 'Server active 24/7', 'sp-community': 'Spanish-speaking community', 'sp-welcome': 'Everyone welcome',
+        'btn-discord': 'Join Discord — get the founder role',
+        'btn-hint': 'Free · No sign-up required · Founder role for early members',
+        'ip-label': 'CONNECT NOW', 'copy-label': 'Copy IP',
+        'vs-0-title': 'Minigames & Bhop', 'vs-0-sub': 'Rotating modes every week',
+        'vs-1-title': 'Real rankings', 'vs-1-sub': 'Your progress is never lost',
+        'vs-2-title': 'Skins by playing', 'vs-2-sub': 'No payment. Just play.',
+        'vs-3-title': 'Active admins', 'vs-3-sub': 'Toxicity-free community',
+        'modes-tag': 'GAME MODES', 'modes-title': 'Everything you can play',
+        'modes-sub': 'Four modes for four types of player. All on the same server, all free.',
+        'mode-0-tag': 'MAIN', 'mode-0-name': 'Mini Games',
+        'mode-0-desc': "The server's main mode. Variety of games, guaranteed fun and always something new every week.",
+        'mode-0-detail': 'Play with up to 32 players in constantly rotating game modes.',
+        'mode-1-tag': 'RANKING', 'mode-1-name': 'Bhop',
+        'mode-1-desc': "Chain perfect jumps, improve your technique and climb the server's global ranking.",
+        'mode-1-detail': 'Persistent rankings. Your best time always saved.',
+        'mode-2-tag': 'PROGRESS', 'mode-2-name': 'Rank System',
+        'mode-2-desc': 'Every match counts. Rank up, prove your skill and leave your mark on the server.',
+        'mode-2-detail': 'Multiple ranks from Beginner to Elite.',
+        'mode-3-tag': 'FREE', 'mode-3-name': 'Skin Shop',
+        'mode-3-desc': 'Earn credits by playing — for free — and redeem them for exclusive server skins.',
+        'mode-3-detail': 'Credits earned by playtime, kills and achievements.',
+        'prog-tag': 'PROGRESSION SYSTEM', 'prog-title': 'Every match has value',
+        'prog-sub': 'Rank up, earn credits and customize your experience. All by playing.',
+        'prog-ranks-title': 'Rank System',
+        'prog-ranks-desc': 'Every Bhop and Minigames match earns points. Rank up and prove your level to the community.',
+        'rank-0': 'Beginner', 'rank-1': 'Veteran', 'rank-2': 'Expert', 'rank-3': 'Master', 'rank-4': 'Elite',
+        'rank-top': 'TOP',
+        'prog-skins-title': 'Skin Shop',
+        'prog-skins-desc': 'Earn credits by playing and redeem them for skins. VIP players get access to exclusive skins and extra perks.',
+        'cf-0': 'Play matches', 'cf-1': 'Earn credits', 'cf-2': 'Get skins',
+        'cs-0': 'Playtime', 'cs-1': 'Kills and assists', 'cs-2': 'Server achievements', 'cs-3': 'VIP — exclusive skins',
+        'faq-tag': 'FAQ', 'faq-title': 'Frequently asked questions',
+        'faq-sub': 'Everything you need to know before connecting.',
+        'faq-0-q': 'Is the server completely free?',
+        'faq-0-a': 'Yes, 100% free. Credits for the skin shop are earned by playing. No in-game purchases or pay-to-win advantages.',
+        'faq-1-q': 'Are there active admins against cheaters and toxicity?',
+        'faq-1-a': 'Yes. The RandomPicks team actively monitors the server. There is a report channel on Discord with fast response.',
+        'faq-2-q': "Can I play if I don't speak Spanish?",
+        'faq-2-a': 'Absolutely. The server is a Spanish-speaking community but everyone is welcome. CS2 is a universal language.',
+        'faq-3-q': 'Do ranks ever reset?',
+        'faq-3-a': 'Ranks do not reset by default. Any seasonal reset will be announced in advance on Discord with compensation for active players.',
+        'faq-4-q': 'How often are new modes added?',
+        'faq-4-a': "The community votes on Discord for which modes to add. We have a dedicated channel for suggestions and add content regularly.",
+        'faq-5-q': 'How do I connect to the server?',
+        'faq-5-a': 'Open CS2, open the console with ~ and type: connect cs2.randompicks.es:27015. You can also search for "RandomPicks" in the server browser.',
+        'founder-badge': '🎖️ FOUNDER ROLE — LIMITED SPOTS',
+        'discord-title': 'Join before the launch window closes',
+        'discord-sub': "The founder role is exclusive to those who join during launch. You'll have a voice in the modes we add, access to private channels and permanent recognition for being here from the start.",
+        'perk-0': 'Permanent founder role', 'perk-1': 'Vote on the modes we add',
+        'perk-2': 'Direct contact with admins', 'perk-3': 'Access to exclusive channels',
+        'btn-discord-big': 'Join Discord and get the role',
+        'discord-footnote': 'Free · No sign-up required · Founder role will not be available after launch',
+        'footer-text': 'CS2 minigames server · Not affiliated with Valve Corporation',
+      },
+    };
+
+    function applyLang(lang) {
+      var dict = t[lang];
+      document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        if (dict[key] !== undefined) el.textContent = dict[key];
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-html');
+        if (dict[key] !== undefined) el.innerHTML = dict[key];
+      });
+      var esEl = document.getElementById('lang-es');
+      var enEl = document.getElementById('lang-en');
+      var btn  = document.getElementById('lang-toggle');
+      if (lang === 'es') {
+        esEl.classList.add('lang-active');   esEl.classList.remove('lang-inactive');
+        enEl.classList.add('lang-inactive'); enEl.classList.remove('lang-active');
+        btn.setAttribute('aria-label', 'Switch to English');
+        btn.setAttribute('title', 'Switch to English');
+      } else {
+        enEl.classList.add('lang-active');   enEl.classList.remove('lang-inactive');
+        esEl.classList.add('lang-inactive'); esEl.classList.remove('lang-active');
+        btn.setAttribute('aria-label', 'Cambiar a Español');
+        btn.setAttribute('title', 'Cambiar a Español');
+      }
+      document.documentElement.setAttribute('lang', lang);
+    }
+
+    var currentLang = (function() {
+      var s = localStorage.getItem('rp-lang');
+      if (s === 'es' || s === 'en') return s;
+      return navigator.language.startsWith('es') ? 'es' : 'en';
+    })();
+    if (currentLang !== 'es') applyLang(currentLang);
+
+    document.getElementById('lang-toggle').addEventListener('click', function() {
+      currentLang = currentLang === 'es' ? 'en' : 'es';
+      localStorage.setItem('rp-lang', currentLang);
+      applyLang(currentLang);
+    });
+
+    /* HAMBURGER */
+    var hamburger  = document.getElementById('hamburger');
+    var mobileMenu = document.getElementById('mobile-menu');
+    if (hamburger) hamburger.addEventListener('click', function() { mobileMenu.classList.toggle('open'); });
+    if (mobileMenu) mobileMenu.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() { mobileMenu.classList.remove('open'); });
+    });
+
+    /* COPY IP */
+    var copyBtn   = document.getElementById('copy-btn');
+    var copyLabel = document.getElementById('copy-label');
+    if (copyBtn) copyBtn.addEventListener('click', function() {
+      navigator.clipboard.writeText('cs2.randompicks.es:27015');
+      copyLabel.textContent = currentLang === 'es' ? '¡Copiado!' : 'Copied!';
+      setTimeout(function() { copyLabel.textContent = t[currentLang]['copy-label']; }, 2000);
+    });
+
+    /* FAQ ACCORDION */
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var idx    = btn.getAttribute('data-faq');
+        var answer = document.getElementById('faq-answer-' + idx);
+        var isOpen = btn.getAttribute('aria-expanded') === 'true';
+        document.querySelectorAll('.faq-question').forEach(function(b) {
+          b.setAttribute('aria-expanded', 'false');
+          b.closest('.faq-item').classList.remove('open');
+        });
+        if (!isOpen) {
+          btn.setAttribute('aria-expanded', 'true');
+          btn.closest('.faq-item').classList.add('open');
+        }
+      });
+    });
   </script>
 </Layout>
 
 <style>
-  /* NAV */
+  /* ── NAV ── */
   nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    background: rgba(10, 10, 15, 0.85);
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,10,15,0.85);
     backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
   }
   .nav-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
-    height: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    max-width: 1200px; margin: 0 auto; padding: 0 24px;
+    height: 64px; display: flex; align-items: center; justify-content: space-between;
   }
   .logo-img-link { display: flex; align-items: center; text-decoration: none; }
-  .nav-logo {
-    height: 40px;
-    width: 40px;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 8px;
-  }
-  .footer-logo {
-    height: 40px;
-    width: auto;
-    object-fit: contain;
-    border-radius: 6px;
-    opacity: 0.85;
-  }
-  .nav-links {
-    display: flex;
-    gap: 32px;
-    list-style: none;
-  }
-  .nav-links a {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: color 0.2s;
-    letter-spacing: 0.02em;
-  }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; letter-spacing: 0.02em; }
   .nav-links a:hover { color: var(--text); }
-  .nav-discord {
-    color: var(--discord) !important;
-    border: 1px solid var(--discord);
-    padding: 6px 16px;
-    border-radius: 6px;
-    transition: background 0.2s !important;
-  }
+  .nav-discord { color: var(--discord) !important; border: 1px solid var(--discord); padding: 5px 14px; border-radius: 6px; transition: background 0.2s !important; }
   .nav-discord:hover { background: var(--discord) !important; color: white !important; }
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 4px;
+  .nav-right { display: flex; align-items: center; gap: 12px; }
+  .lang-toggle {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 8px;
+    padding: 5px 11px; cursor: pointer; font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 0.07em; color: var(--text); transition: border-color 0.2s, background 0.2s; outline: none;
   }
-  .hamburger span {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background: var(--text);
-    border-radius: 2px;
-    transition: 0.3s;
-  }
-  .mobile-menu {
-    display: none;
-    flex-direction: column;
-    padding: 16px 24px 20px;
-    gap: 12px;
-    border-top: 1px solid var(--border);
-  }
-  .mobile-menu a {
-    color: var(--muted);
-    text-decoration: none;
-    font-weight: 500;
-    padding: 8px 0;
-    border-bottom: 1px solid var(--border);
-  }
+  .lang-toggle:hover { border-color: rgba(255,255,255,0.18); background: rgba(255,255,255,0.07); }
+  .lang-toggle:focus-visible { border-color: var(--orange); box-shadow: 0 0 0 2px rgba(255,107,43,0.3); }
+  .lang-globe { font-size: 0.85rem; }
+  .lang-active { color: var(--text); }
+  .lang-sep { color: var(--border); font-weight: 400; }
+  .lang-inactive { color: var(--muted); transition: color 0.15s; }
+  .lang-toggle:hover .lang-inactive { color: var(--text); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: 0.3s; }
+  .mobile-menu { display: none; flex-direction: column; padding: 16px 24px 20px; gap: 12px; border-top: 1px solid var(--border); }
+  .mobile-menu a { color: var(--muted); text-decoration: none; font-weight: 500; padding: 8px 0; border-bottom: 1px solid var(--border); }
   .mobile-menu.open { display: flex; }
-
   @media (max-width: 768px) {
     .nav-links { display: none; }
     .hamburger { display: flex; }
+    .lang-sep, .lang-inactive { display: none; }
+    .lang-toggle { padding: 5px 9px; }
   }
 
-  /* HERO */
+  /* ── HERO ── */
   .hero {
-    min-height: 100vh;
-    padding: 120px 24px 80px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 48px;
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
+    min-height: 100vh; padding: 120px 24px 80px;
+    display: flex; align-items: center; justify-content: space-between; gap: 48px;
+    max-width: 1200px; margin: 0 auto; position: relative;
   }
-  .hero-bg {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-  }
+  .hero-bg { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
   .grid-overlay {
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(255,107,43,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,107,43,0.04) 1px, transparent 1px);
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(255,107,43,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,107,43,0.04) 1px, transparent 1px);
     background-size: 60px 60px;
   }
-  .scanline {
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(255,107,43,0.3), transparent);
-    animation: scan 8s linear infinite;
-    opacity: 0.5;
-  }
-  .orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.15;
-  }
+  .scanline { position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, rgba(255,107,43,0.3), transparent); animation: scan 8s linear infinite; opacity: 0.5; }
+  .orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.15; }
   .orb1 { width: 500px; height: 500px; background: var(--orange); top: -100px; right: -100px; animation: float 8s ease-in-out infinite; }
   .orb2 { width: 300px; height: 300px; background: #5865F2; bottom: 100px; left: -50px; animation: float 10s ease-in-out infinite reverse; }
   .orb3 { width: 200px; height: 200px; background: var(--orange); bottom: 50%; left: 40%; animation: float 12s ease-in-out infinite 2s; }
-
-  .hero-content {
-    position: relative;
-    z-index: 1;
-    max-width: 620px;
-    animation: fadeInUp 0.8s ease both;
-  }
+  .hero-content { position: relative; z-index: 1; max-width: 640px; animation: fadeInUp 0.8s ease both; }
   .badge-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(255,107,43,0.1);
-    border: 1px solid rgba(255,107,43,0.3);
-    border-radius: 100px;
-    padding: 6px 16px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    color: var(--orange);
-    margin-bottom: 24px;
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,107,43,0.1); border: 1px solid rgba(255,107,43,0.3);
+    border-radius: 100px; padding: 6px 16px; font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.1em; color: var(--orange); margin-bottom: 24px;
   }
-  .dot-pulse {
-    width: 8px; height: 8px;
-    background: #22c55e;
-    border-radius: 50%;
-    animation: pulse-glow 2s ease-in-out infinite;
-    box-shadow: 0 0 8px #22c55e;
-  }
-  .hero-title {
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    line-height: 1.05;
-    margin-bottom: 24px;
-    color: var(--text);
-  }
-  .title-highlight {
-    position: relative;
-    display: inline-block;
-  }
+  .dot-pulse { width: 8px; height: 8px; background: #22c55e; border-radius: 50%; animation: pulse-glow 2s ease-in-out infinite; box-shadow: 0 0 8px #22c55e; }
+  .hero-title { font-size: clamp(2.2rem, 5.5vw, 4rem); line-height: 1.08; margin-bottom: 20px; color: var(--text); }
+  .title-highlight { position: relative; display: inline-block; }
   .title-text { color: var(--orange); animation: flicker 6s ease-in-out infinite; }
-  .title-underline {
-    position: absolute;
-    bottom: -4px; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--orange), transparent);
-    border-radius: 2px;
-  }
-  .hero-sub {
-    font-size: 1.1rem;
-    color: var(--muted);
-    line-height: 1.7;
-    margin-bottom: 40px;
-    max-width: 500px;
-  }
-  .hero-actions {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-    margin-bottom: 32px;
-  }
-  .btn-discord {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: var(--discord);
-    color: white;
-    text-decoration: none;
-    padding: 14px 28px;
-    border-radius: 10px;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 4px 24px rgba(88,101,242,0.4);
-  }
-  .btn-discord:hover {
-    background: var(--discord-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 32px rgba(88,101,242,0.5);
-  }
-  .btn-outline {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    border: 1px solid var(--border);
-    color: var(--text);
-    text-decoration: none;
-    padding: 14px 24px;
-    border-radius: 10px;
-    font-weight: 500;
-    font-size: 1rem;
-    transition: border-color 0.2s, background 0.2s, transform 0.2s;
-  }
-  .btn-outline:hover {
-    border-color: var(--orange);
-    background: rgba(255,107,43,0.06);
-    transform: translateY(-2px);
-  }
-  .hero-meta {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 0.85rem;
-    color: var(--muted);
-  }
-  .meta-item { display: flex; align-items: center; gap: 6px; }
-  .meta-dot { width: 8px; height: 8px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 8px #22c55e; }
-  .meta-sep { color: var(--border); }
+  .title-underline { position: absolute; bottom: -4px; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--orange), transparent); border-radius: 2px; }
+  .hero-sub { font-size: 1.05rem; color: var(--muted); line-height: 1.75; margin-bottom: 24px; max-width: 540px; }
 
-  /* CROSSHAIR VISUAL */
-  .hero-visual {
-    position: relative;
-    z-index: 1;
-    animation: fadeInUp 1s ease 0.3s both;
-    flex-shrink: 0;
+  /* Social proof bar */
+  .hero-social-proof {
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    font-size: 0.8rem; color: var(--muted); margin-bottom: 32px;
   }
-  .crosshair-wrap {
-    position: relative;
-    width: 320px;
-    height: 320px;
+  .sp-item { display: flex; align-items: center; gap: 6px; }
+  .sp-dot { width: 7px; height: 7px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 6px #22c55e; }
+  .sp-sep { color: var(--border); }
+
+  /* CTA block */
+  .hero-cta-block { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--discord); color: white; text-decoration: none;
+    padding: 16px 32px; border-radius: 12px; font-weight: 700; font-size: 1rem;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 28px rgba(88,101,242,0.45);
+    align-self: flex-start;
   }
-  .crosshair {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .ch-ring {
-    position: absolute;
-    border: 1px solid;
-    border-radius: 50%;
-  }
-  .ch-ring1 {
-    width: 280px; height: 280px;
-    border-color: rgba(255,107,43,0.2);
-    animation: rotate-slow 20s linear infinite;
-  }
-  .ch-ring1::before {
-    content: '';
-    position: absolute;
-    top: -3px; left: 50%;
-    width: 5px; height: 5px;
-    background: var(--orange);
-    border-radius: 50%;
-    transform: translateX(-50%);
-  }
-  .ch-ring2 {
-    width: 200px; height: 200px;
-    border-color: rgba(255,107,43,0.15);
-    animation: rotate-slow 15s linear infinite reverse;
-  }
-  .ch-lines {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .ch-h, .ch-v {
-    position: absolute;
-    background: rgba(255,107,43,0.5);
-  }
-  .ch-h { width: 260px; height: 1px; }
-  .ch-v { width: 1px; height: 260px; }
-  .ch-center {
-    width: 10px; height: 10px;
-    background: var(--orange);
-    border-radius: 50%;
-    box-shadow: 0 0 20px var(--orange), 0 0 40px var(--orange-glow);
-    animation: pulse-glow 2s ease-in-out infinite;
-    position: relative;
-    z-index: 2;
-  }
-  .ch-label {
-    position: absolute;
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    color: var(--orange);
-    opacity: 0.7;
-  }
-  .top-left { top: 24px; left: 24px; }
-  .top-right { top: 24px; right: 24px; }
-  .bot-left { bottom: 24px; left: 24px; }
-  .bot-right { bottom: 24px; right: 24px; }
+  .btn-primary:hover { background: var(--discord-hover); transform: translateY(-2px); box-shadow: 0 8px 36px rgba(88,101,242,0.55); }
+  .btn-hint { font-size: 0.75rem; color: var(--muted); padding-left: 4px; }
 
   .server-ip {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    margin-top: 20px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 10px 16px;
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 10px 16px;
   }
-  .ip-label {
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    color: var(--orange);
-  }
-  .ip-text {
-    font-family: 'Courier New', monospace;
-    font-size: 0.95rem;
-    color: var(--text);
-    letter-spacing: 0.05em;
-    user-select: all;
-  }
+  .ip-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.15em; color: var(--orange); }
+  .ip-text { font-family: 'Courier New', monospace; font-size: 0.92rem; color: var(--text); letter-spacing: 0.04em; user-select: all; }
   .ip-copy {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(255,107,43,0.1);
-    border: 1px solid rgba(255,107,43,0.25);
-    border-radius: 6px;
-    color: var(--orange);
-    font-size: 0.8rem;
-    font-weight: 600;
-    padding: 5px 10px;
-    cursor: pointer;
-    transition: background 0.2s;
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(255,107,43,0.1); border: 1px solid rgba(255,107,43,0.25);
+    border-radius: 6px; color: var(--orange); font-size: 0.78rem; font-weight: 600;
+    padding: 5px 10px; cursor: pointer; transition: background 0.2s;
   }
   .ip-copy:hover { background: rgba(255,107,43,0.2); }
 
-  /* RESPONSIVE — tablet */
-  @media (max-width: 900px) {
-    .hero {
-      flex-direction: column;
-      text-align: center;
-      padding-top: 100px;
-      padding-bottom: 60px;
-      gap: 32px;
-    }
-    .hero-sub { max-width: 100%; }
-    .hero-actions { justify-content: center; }
-    .hero-meta { justify-content: center; }
-    .server-ip { justify-content: center; flex-wrap: wrap; }
-    .crosshair-wrap { width: 240px; height: 240px; }
-    .ch-ring1 { width: 210px; height: 210px; }
-    .ch-ring2 { width: 150px; height: 150px; }
-    .ch-h { width: 190px; }
-    .ch-v { height: 190px; }
-    .modes-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
-    .features-grid { grid-template-columns: 1fr 1fr; }
-    .section { padding: 72px 24px; }
-    .discord-card { padding: 56px 32px; }
+  /* Crosshair */
+  .hero-visual { position: relative; z-index: 1; animation: fadeInUp 1s ease 0.3s both; flex-shrink: 0; }
+  .crosshair-wrap { position: relative; width: 320px; height: 320px; }
+  .crosshair { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+  .ch-ring { position: absolute; border: 1px solid; border-radius: 50%; }
+  .ch-ring1 { width: 280px; height: 280px; border-color: rgba(255,107,43,0.2); animation: rotate-slow 20s linear infinite; }
+  .ch-ring1::before { content: ''; position: absolute; top: -3px; left: 50%; width: 5px; height: 5px; background: var(--orange); border-radius: 50%; transform: translateX(-50%); }
+  .ch-ring2 { width: 200px; height: 200px; border-color: rgba(255,107,43,0.15); animation: rotate-slow 15s linear infinite reverse; }
+  .ch-lines { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+  .ch-h, .ch-v { position: absolute; background: rgba(255,107,43,0.5); }
+  .ch-h { width: 260px; height: 1px; }
+  .ch-v { width: 1px; height: 260px; }
+  .ch-center { width: 10px; height: 10px; background: var(--orange); border-radius: 50%; box-shadow: 0 0 20px var(--orange), 0 0 40px var(--orange-glow); animation: pulse-glow 2s ease-in-out infinite; position: relative; z-index: 2; }
+  .ch-label { position: absolute; font-family: 'Rajdhani', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; color: var(--orange); opacity: 0.7; }
+  .top-left { top: 24px; left: 24px; } .top-right { top: 24px; right: 24px; }
+  .bot-left { bottom: 24px; left: 24px; } .bot-right { bottom: 24px; right: 24px; }
+
+  /* ── VALUE STRIP ── */
+  .value-strip {
+    background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 0; position: relative; z-index: 1;
+  }
+  .value-strip-inner {
+    max-width: 1200px; margin: 0 auto; padding: 0 24px;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+  }
+  .vs-item {
+    display: flex; align-items: center; gap: 14px;
+    padding: 24px 20px; transition: background 0.2s;
+  }
+  .vs-item:hover { background: rgba(255,107,43,0.04); }
+  .vs-divider { width: 1px; background: var(--border); margin: 16px 0; }
+  .vs-icon { font-size: 1.6rem; flex-shrink: 0; }
+  .vs-title { font-family: 'Rajdhani', sans-serif; font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+  .vs-sub { font-size: 0.78rem; color: var(--muted); }
+  @media (max-width: 768px) {
+    .value-strip-inner { grid-template-columns: repeat(2, 1fr); }
+    .vs-divider:nth-child(4) { display: none; }
+  }
+  @media (max-width: 480px) {
+    .value-strip-inner { grid-template-columns: 1fr; }
+    .vs-divider { display: none; }
+    .vs-item { padding: 16px; border-bottom: 1px solid var(--border); }
+    .vs-item:last-child { border-bottom: none; }
   }
 
-  /* RESPONSIVE — móvil */
-  @media (max-width: 600px) {
-    .nav-inner { padding: 0 16px; }
-    .hero {
-      padding: 90px 16px 48px;
-      min-height: auto;
-    }
-    .badge-pill { font-size: 0.7rem; padding: 5px 12px; }
-    .hero-title { font-size: 2.2rem; }
-    .hero-sub { font-size: 0.95rem; }
-    .btn-discord, .btn-outline {
-      width: 100%;
-      justify-content: center;
-      padding: 13px 20px;
-      font-size: 0.95rem;
-    }
-    .hero-actions { flex-direction: column; gap: 12px; }
-    .server-ip {
-      width: 100%;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 8px;
-    }
-    .ip-text { font-size: 0.85rem; word-break: break-all; }
-    .hero-visual { display: none; }
-    .ticker-item { padding: 16px 28px; }
-    .ticker-val { font-size: 1.2rem; }
-    .ticker-label { font-size: 0.75rem; }
-    .section { padding: 56px 16px; }
-    .section-header { margin-bottom: 40px; }
-    .modes-grid { grid-template-columns: 1fr; gap: 14px; }
-    .mode-card { padding: 22px; }
-    .features-grid { grid-template-columns: 1fr; gap: 14px; }
-    .feature-card { padding: 18px; }
-    .discord-card { padding: 40px 20px; border-radius: 16px; }
-    .discord-logo-wrap { width: 64px; height: 64px; border-radius: 16px; }
-    .discord-logo-svg { width: 36px; height: 36px; }
-    .discord-perks { flex-direction: column; align-items: flex-start; padding-left: 20px; gap: 10px; }
-    .btn-discord-big {
-      width: 100%;
-      justify-content: center;
-      padding: 16px 24px;
-      font-size: 1rem;
-    }
-    .footer-inner {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 12px;
-    }
-    .footer-links { flex-wrap: wrap; justify-content: center; gap: 12px; }
-  }
-
-  /* RESPONSIVE — móvil pequeño */
-  @media (max-width: 380px) {
-    .hero-title { font-size: 1.9rem; }
-    .ip-text { font-size: 0.78rem; }
-  }
-
-  /* TICKER */
-  .ticker-wrap {
-    background: var(--surface);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    overflow: hidden;
-    position: relative;
-    z-index: 1;
-  }
-  .ticker {
-    display: flex;
-    gap: 0;
-    animation: ticker-scroll 20s linear infinite;
-    width: max-content;
-  }
-  @keyframes ticker-scroll {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-  .ticker-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 20px 48px;
-    border-right: 1px solid var(--border);
-    white-space: nowrap;
-  }
-  .ticker-val {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--orange);
-  }
-  .ticker-label {
-    font-size: 0.85rem;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-
-  /* SECTIONS */
-  .section {
-    padding: 100px 24px;
-    position: relative;
-  }
+  /* ── SECTIONS ── */
+  .section { padding: 100px 24px; position: relative; }
   .section-alt { background: var(--bg2); }
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  .section-header {
-    text-align: center;
-    margin-bottom: 64px;
-  }
-  .section-tag {
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    color: var(--orange);
-    margin-bottom: 12px;
-  }
-  .section-title {
-    font-size: clamp(2rem, 4vw, 3rem);
-    color: var(--text);
-    margin-bottom: 16px;
-  }
-  .section-sub {
-    color: var(--muted);
-    font-size: 1rem;
-    max-width: 480px;
-    margin: 0 auto;
-  }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .section-header { text-align: center; margin-bottom: 64px; }
+  .section-tag { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; color: var(--orange); margin-bottom: 12px; }
+  .section-title { font-size: clamp(2rem, 4vw, 3rem); color: var(--text); margin-bottom: 16px; }
+  .section-sub { color: var(--muted); font-size: 1rem; max-width: 480px; margin: 0 auto; }
 
-  /* MODES GRID */
-  .modes-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 20px;
-  }
+  /* ── MODES GRID ── */
+  .modes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
   .mode-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 28px;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    transition: border-color 0.25s, transform 0.25s, background 0.25s;
-    animation: fadeInUp 0.6s ease both;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+    padding: 28px; position: relative; overflow: hidden; cursor: pointer;
+    transition: border-color 0.25s, transform 0.25s, background 0.25s; animation: fadeInUp 0.6s ease both;
   }
-  .mode-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(255,107,43,0.05) 0%, transparent 60%);
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-  .mode-card:hover {
-    border-color: rgba(255,107,43,0.4);
-    transform: translateY(-4px);
-    background: var(--surface2);
-  }
+  .mode-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,107,43,0.05) 0%, transparent 60%); opacity: 0; transition: opacity 0.3s; }
+  .mode-card:hover { border-color: rgba(255,107,43,0.4); transform: translateY(-4px); background: var(--surface2); }
   .mode-card:hover::before { opacity: 1; }
-  .mode-tag {
-    position: absolute;
-    top: 16px; right: 16px;
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    background: rgba(255,107,43,0.15);
-    color: var(--orange);
-    border: 1px solid rgba(255,107,43,0.25);
-    padding: 3px 10px;
-    border-radius: 100px;
-  }
-  .mode-icon {
-    font-size: 2.5rem;
-    margin-bottom: 16px;
-    display: block;
-    animation: float 6s ease-in-out infinite;
-  }
-  .mode-name {
-    font-size: 1.4rem;
-    color: var(--text);
-    margin-bottom: 10px;
-  }
-  .mode-desc {
-    font-size: 0.9rem;
-    color: var(--muted);
-    line-height: 1.6;
-  }
-  .mode-arrow {
-    margin-top: 20px;
-    color: var(--orange);
-    opacity: 0;
-    transform: translateX(-8px);
-    transition: opacity 0.25s, transform 0.25s;
-  }
+  .mode-tag { position: absolute; top: 16px; right: 16px; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em; background: rgba(255,107,43,0.15); color: var(--orange); border: 1px solid rgba(255,107,43,0.25); padding: 3px 10px; border-radius: 100px; }
+  .mode-icon { font-size: 2.5rem; margin-bottom: 16px; display: block; animation: float 6s ease-in-out infinite; }
+  .mode-name { font-size: 1.35rem; color: var(--text); margin-bottom: 10px; }
+  .mode-desc { font-size: 0.875rem; color: var(--muted); line-height: 1.6; margin-bottom: 10px; }
+  .mode-detail { font-size: 0.78rem; color: var(--orange); opacity: 0.8; font-weight: 500; }
+  .mode-arrow { margin-top: 20px; color: var(--orange); opacity: 0; transform: translateX(-8px); transition: opacity 0.25s, transform 0.25s; }
   .mode-card:hover .mode-arrow { opacity: 1; transform: translateX(0); }
 
-  /* FEATURES */
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 24px;
-  }
-  .feature-card {
-    display: flex;
-    gap: 20px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 24px;
-    transition: border-color 0.25s, transform 0.25s;
-    animation: fadeInUp 0.6s ease both;
-  }
-  .feature-card:hover {
-    border-color: rgba(255,107,43,0.3);
-    transform: translateY(-3px);
-  }
-  .feature-icon-wrap {
-    width: 48px; height: 48px;
-    background: rgba(255,107,43,0.1);
-    border: 1px solid rgba(255,107,43,0.2);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    font-size: 1.4rem;
-  }
-  .feature-title {
-    font-size: 1.15rem;
-    color: var(--text);
-    margin-bottom: 6px;
-  }
-  .feature-desc {
-    font-size: 0.875rem;
-    color: var(--muted);
-    line-height: 1.6;
-  }
+  /* ── PROGRESSION ── */
+  .prog-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .prog-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 32px; }
+  .prog-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .prog-card-icon { font-size: 1.8rem; }
+  .prog-card-title { font-size: 1.3rem; color: var(--text); }
+  .prog-card-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.65; margin-bottom: 28px; }
+  .rank-ladder { display: flex; flex-direction: column; gap: 10px; }
+  .rank-item { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 8px; transition: border-color 0.2s; animation: fadeInUp 0.5s ease both; }
+  .rank-item:hover { border-color: rgba(255,107,43,0.3); }
+  .rank-icon { font-size: 1rem; }
+  .rank-name { font-family: 'Rajdhani', sans-serif; font-size: 1rem; font-weight: 700; flex: 1; }
+  .rank-badge { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; background: rgba(255,107,43,0.15); color: var(--orange); border: 1px solid rgba(255,107,43,0.3); padding: 2px 8px; border-radius: 100px; }
+  .credits-flow { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; gap: 8px; }
+  .cf-step { display: flex; flex-direction: column; align-items: center; gap: 6px; flex: 1; }
+  .cf-icon { font-size: 1.8rem; background: rgba(255,107,43,0.08); border: 1px solid rgba(255,107,43,0.2); border-radius: 10px; width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; }
+  .cf-label { font-size: 0.75rem; color: var(--muted); text-align: center; font-weight: 500; }
+  .cf-arrow { color: var(--orange); font-size: 1.1rem; opacity: 0.5; }
+  .credits-sources { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .cs-item { display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: var(--muted); }
+  .cs-item span:first-child { color: #22c55e; font-weight: 700; }
+  .cs-vip span:last-child { color: var(--orange); }
+  .cs-vip span:first-child { color: var(--orange); }
+  @media (max-width: 768px) { .prog-grid { grid-template-columns: 1fr; } }
 
-  /* DISCORD SECTION */
+  /* ── FAQ ── */
+  .faq-grid { display: flex; flex-direction: column; gap: 0; max-width: 800px; margin: 0 auto; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-question {
+    width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    background: none; border: none; padding: 20px 24px; text-align: left;
+    font-size: 0.95rem; font-weight: 600; color: var(--text); cursor: pointer;
+    transition: background 0.2s; font-family: inherit;
+  }
+  .faq-question:hover { background: rgba(255,107,43,0.04); }
+  .faq-item.open .faq-question { color: var(--orange); background: rgba(255,107,43,0.04); }
+  .faq-chevron { flex-shrink: 0; color: var(--muted); transition: transform 0.25s; }
+  .faq-item.open .faq-chevron { transform: rotate(180deg); color: var(--orange); }
+  .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
+  .faq-item.open .faq-answer { max-height: 200px; }
+  .faq-answer p { padding: 0 24px 20px; font-size: 0.9rem; color: var(--muted); line-height: 1.7; margin: 0; }
+
+  /* ── DISCORD SECTION ── */
   .discord-section { background: var(--bg); }
-  .discord-card {
-    background: linear-gradient(135deg, var(--surface) 0%, #1a1a35 100%);
-    border: 1px solid var(--discord);
-    border-radius: 24px;
-    padding: 72px 48px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
+  .discord-card { background: linear-gradient(135deg, var(--surface) 0%, #1a1a35 100%); border: 1px solid var(--discord); border-radius: 24px; padding: 72px 48px; text-align: center; position: relative; overflow: hidden; }
   .discord-bg-decor { position: absolute; inset: 0; pointer-events: none; }
-  .dc-orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(60px);
-    opacity: 0.12;
-  }
+  .dc-orb { position: absolute; border-radius: 50%; filter: blur(60px); opacity: 0.12; }
   .dc-orb1 { width: 400px; height: 400px; background: var(--discord); top: -150px; right: -100px; }
   .dc-orb2 { width: 300px; height: 300px; background: var(--discord); bottom: -100px; left: -80px; }
   .discord-content { position: relative; z-index: 1; }
-  .discord-logo-wrap {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 80px; height: 80px;
-    background: var(--discord);
-    border-radius: 20px;
-    margin-bottom: 28px;
-    box-shadow: 0 8px 32px rgba(88,101,242,0.4);
-  }
+  .discord-logo-wrap { display: inline-flex; align-items: center; justify-content: center; width: 80px; height: 80px; background: var(--discord); border-radius: 20px; margin-bottom: 20px; box-shadow: 0 8px 32px rgba(88,101,242,0.4); }
   .discord-logo-svg { width: 44px; height: 44px; color: white; }
-  .discord-title {
-    font-size: clamp(2rem, 4vw, 3rem);
-    color: var(--text);
-    margin-bottom: 16px;
-  }
-  .discord-sub {
-    color: var(--muted);
-    font-size: 1rem;
-    max-width: 520px;
-    margin: 0 auto 40px;
-    line-height: 1.7;
-  }
-  .discord-perks {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 16px 32px;
-    margin-bottom: 44px;
-  }
-  .perk {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.9rem;
-    color: var(--muted);
-  }
-  .perk span { color: #22c55e; font-weight: 700; }
-  .btn-discord-big {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    background: var(--discord);
-    color: white;
-    text-decoration: none;
-    padding: 18px 40px;
-    border-radius: 14px;
-    font-weight: 700;
-    font-size: 1.1rem;
-    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 4px 32px rgba(88,101,242,0.4);
-  }
-  .btn-discord-big:hover {
-    background: var(--discord-hover);
-    transform: translateY(-3px);
-    box-shadow: 0 12px 48px rgba(88,101,242,0.5);
-  }
+  .founder-badge { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; color: var(--orange); background: rgba(255,107,43,0.12); border: 1px solid rgba(255,107,43,0.3); border-radius: 100px; display: inline-block; padding: 5px 16px; margin-bottom: 20px; }
+  .discord-title { font-size: clamp(1.8rem, 4vw, 2.8rem); color: var(--text); margin-bottom: 16px; }
+  .discord-sub { color: var(--muted); font-size: 1rem; max-width: 540px; margin: 0 auto 36px; line-height: 1.75; }
+  .discord-perks { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 28px; margin-bottom: 40px; }
+  .perk { display: flex; align-items: center; gap: 8px; font-size: 0.88rem; color: var(--muted); }
+  .perk span:first-child { color: #22c55e; font-weight: 700; }
+  .btn-discord-big { display: inline-flex; align-items: center; gap: 12px; background: var(--discord); color: white; text-decoration: none; padding: 18px 40px; border-radius: 14px; font-weight: 700; font-size: 1.1rem; transition: background 0.2s, transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 32px rgba(88,101,242,0.4); }
+  .btn-discord-big:hover { background: var(--discord-hover); transform: translateY(-3px); box-shadow: 0 12px 48px rgba(88,101,242,0.5); }
+  .discord-footnote { margin-top: 16px; font-size: 0.75rem; color: var(--muted); opacity: 0.7; }
 
-  @media (max-width: 600px) {
-    .discord-card { padding: 48px 24px; }
-    .discord-perks { gap: 12px 20px; }
-  }
-
-  /* FOOTER */
-  footer {
-    background: var(--bg2);
-    border-top: 1px solid var(--border);
-    padding: 32px 24px;
-  }
-  .footer-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-  .footer-text {
-    font-size: 0.8rem;
-    color: var(--muted);
-  }
-  .footer-links {
-    display: flex;
-    gap: 20px;
-  }
-  .footer-links a {
-    font-size: 0.8rem;
-    color: var(--muted);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
+  /* ── FOOTER ── */
+  footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 56px 24px; }
+  .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+  .footer-logo { height: 48px; width: 78px; object-fit: cover; object-position: center; border-radius: 10px; opacity: 0.9; }
+  .footer-text { font-size: 0.92rem; color: var(--muted); }
+  .footer-links { display: flex; gap: 28px; align-items: center; }
+  .footer-links a { font-size: 0.92rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
   .footer-links a:hover { color: var(--text); }
-  .footer-ip {
-    font-family: 'Courier New', monospace;
-    font-size: 0.8rem;
-    color: var(--orange);
-    opacity: 0.7;
+  .footer-ip { font-family: 'Courier New', monospace; font-size: 0.88rem; color: var(--orange); opacity: 0.8; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero { flex-direction: column; text-align: center; padding-top: 100px; padding-bottom: 60px; gap: 32px; }
+    .hero-sub, .badge-pill { margin-left: auto; margin-right: auto; }
+    .hero-social-proof { justify-content: center; }
+    .hero-cta-block { align-items: center; }
+    .btn-primary { align-self: stretch; justify-content: center; }
+    .server-ip { justify-content: center; flex-wrap: wrap; width: 100%; }
+    .crosshair-wrap { width: 240px; height: 240px; }
+    .ch-ring1 { width: 210px; height: 210px; } .ch-ring2 { width: 150px; height: 150px; }
+    .ch-h { width: 190px; } .ch-v { height: 190px; }
+    .section { padding: 72px 24px; }
+    .discord-card { padding: 56px 32px; }
+  }
+  @media (max-width: 600px) {
+    .nav-inner { padding: 0 16px; }
+    .hero { padding: 90px 16px 48px; min-height: auto; }
+    .hero-title { font-size: 1.9rem; }
+    .hero-sub { font-size: 0.95rem; }
+    .hero-visual { display: none; }
+    .modes-grid { grid-template-columns: 1fr; gap: 14px; }
+    .mode-card { padding: 22px; }
+    .section { padding: 56px 16px; }
+    .section-header { margin-bottom: 40px; }
+    .discord-card { padding: 40px 20px; border-radius: 16px; }
+    .discord-perks { flex-direction: column; align-items: flex-start; padding-left: 20px; }
+    .btn-discord-big { width: 100%; justify-content: center; padding: 16px 24px; font-size: 1rem; }
+    .footer-inner { flex-direction: column; align-items: center; text-align: center; gap: 12px; }
+    .footer-links { flex-wrap: wrap; justify-content: center; gap: 12px; }
+    .server-ip { flex-direction: column; align-items: flex-start; gap: 8px; width: 100%; }
+    .ip-text { font-size: 0.85rem; word-break: break-all; }
+    .credits-flow { flex-direction: column; gap: 12px; }
+    .cf-arrow { transform: rotate(90deg); }
+    .credits-sources { grid-template-columns: 1fr; }
+    .faq-question { padding: 16px 18px; font-size: 0.88rem; }
+    .faq-answer p { padding: 0 18px 16px; }
   }
 </style>
-
-<script>
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobile-menu');
-  hamburger?.addEventListener('click', () => {
-    mobileMenu?.classList.toggle('open');
-  });
-  mobileMenu?.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => mobileMenu.classList.remove('open'));
-  });
-
-  const copyBtn = document.getElementById('copy-btn');
-  const copyLabel = document.getElementById('copy-label');
-  copyBtn?.addEventListener('click', () => {
-    navigator.clipboard.writeText('cs2.randompicks.es:27015');
-    copyLabel!.textContent = '¡Copiado!';
-    setTimeout(() => { copyLabel!.textContent = 'Copiar'; }, 2000);
-  });
-</script>

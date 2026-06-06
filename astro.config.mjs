@@ -1,5 +1,16 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
-// https://astro.build/config
-export default defineConfig({});
+export default defineConfig({
+  vite: {
+    server: {
+      watch: {
+        ignored: [
+          '**/.vs/**',
+          '**/.git/**',
+          '**/node_modules/**',
+        ],
+      },
+    },
+  },
+});
