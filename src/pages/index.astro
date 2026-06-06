@@ -1011,6 +1011,7 @@ const features = [
 
 <script define:vars={{ analyticsKey: import.meta.env.PUBLIC_ANALYTICS_KEY }}>
   // trackeo de visita
+  console.log("Analytics loaded");
   (async () => {
     const ENDPOINT = "https://randompicks.es/panel/api/analytics/visit";
     const start = Date.now();
@@ -1025,6 +1026,7 @@ const features = [
 
     const sendVisit = async (timeOnPageSeconds) => {
       try {
+        console.log("Sending analytics", window.location.pathname);
         const res = await fetch(ENDPOINT, {
           method: "POST",
           headers: {
@@ -1034,7 +1036,7 @@ const features = [
           body: JSON.stringify(buildPayload(timeOnPageSeconds)),
           keepalive: true,
         });
-        console.log("[analytics] respuesta:", res.status, res.ok ? "OK" : "ERROR");
+        console.log("Analytics status:", res.status);
       } catch (err) {
         console.error("[analytics] fallo de red:", err);
       }
