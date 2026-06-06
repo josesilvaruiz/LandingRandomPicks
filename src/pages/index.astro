@@ -259,6 +259,52 @@ const features = [
       </div>
     </div>
   </footer>
+
+  <script define:vars={{ analyticsKey: import.meta.env.PUBLIC_ANALYTICS_KEY }}>
+    console.log("Analytics loaded");
+    (async () => {
+      const ENDPOINT = "https://randompicks.es/panel/api/analytics/visit";
+      const start = Date.now();
+
+      const buildPayload = (timeOnPageSeconds) => ({
+        path: window.location.pathname,
+        language: navigator.language,
+        screenWidth: window.screen.width,
+        screenHeight: window.screen.height,
+        timeOnPageSeconds,
+      });
+
+      const sendVisit = async (timeOnPageSeconds) => {
+        try {
+          console.log("Sending analytics", window.location.pathname);
+          const res = await fetch(ENDPOINT, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "X-Analytics-Key": analyticsKey,
+            },
+            body: JSON.stringify(buildPayload(timeOnPageSeconds)),
+            keepalive: true,
+          });
+          console.log("Analytics status:", res.status);
+        } catch (err) {
+          console.error("[analytics] fallo de red:", err);
+        }
+      };
+
+      window.addEventListener("visibilitychange", () => {
+        if (document.visibilityState === "hidden") {
+          const seconds = Math.round((Date.now() - start) / 1000);
+          navigator.sendBeacon
+            ? navigator.sendBeacon(ENDPOINT, new Blob([JSON.stringify(buildPayload(seconds))], { type: "application/json" }))
+            : sendVisit(seconds);
+        }
+      });
+
+      console.log("[analytics] key cargada:", analyticsKey ? "SÍ" : "NO — revisa .env");
+      await sendVisit(null);
+    })();
+  </script>
 </Layout>
 
 <style>
@@ -1009,52 +1055,7 @@ const features = [
   }
 </style>
 
-<script define:vars={{ analyticsKey: import.meta.env.PUBLIC_ANALYTICS_KEY }}>
-  // trackeo de visita
-  console.log("Analytics loaded");
-  (async () => {
-    const ENDPOINT = "https://randompicks.es/panel/api/analytics/visit";
-    const start = Date.now();
-
-    const buildPayload = (timeOnPageSeconds) => ({
-      path: window.location.pathname,
-      language: navigator.language,
-      screenWidth: window.screen.width,
-      screenHeight: window.screen.height,
-      timeOnPageSeconds,
-    });
-
-    const sendVisit = async (timeOnPageSeconds) => {
-      try {
-        console.log("Sending analytics", window.location.pathname);
-        const res = await fetch(ENDPOINT, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "X-Analytics-Key": analyticsKey,
-          },
-          body: JSON.stringify(buildPayload(timeOnPageSeconds)),
-          keepalive: true,
-        });
-        console.log("Analytics status:", res.status);
-      } catch (err) {
-        console.error("[analytics] fallo de red:", err);
-      }
-    };
-
-    window.addEventListener("visibilitychange", () => {
-      if (document.visibilityState === "hidden") {
-        const seconds = Math.round((Date.now() - start) / 1000);
-        navigator.sendBeacon
-          ? navigator.sendBeacon(ENDPOINT, new Blob([JSON.stringify(buildPayload(seconds))], { type: "application/json" }))
-          : sendVisit(seconds);
-      }
-    });
-
-    console.log("[analytics] key cargada:", analyticsKey ? "SÍ" : "NO — revisa .env");
-    await sendVisit(null);
-  })();
-
+<script>
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobile-menu');
   hamburger?.addEventListener('click', () => {
