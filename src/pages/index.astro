@@ -261,7 +261,6 @@ const features = [
   </footer>
 
   <script define:vars={{ analyticsKey: import.meta.env.PUBLIC_ANALYTICS_KEY }}>
-    console.log("Analytics loaded");
     (async () => {
       const ENDPOINT = "https://randompicks.es/panel/api/analytics/visit";
       const start = Date.now();
@@ -276,8 +275,7 @@ const features = [
 
       const sendVisit = async (timeOnPageSeconds) => {
         try {
-          console.log("Sending analytics", window.location.pathname);
-          const res = await fetch(ENDPOINT, {
+          await fetch(ENDPOINT, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -286,10 +284,7 @@ const features = [
             body: JSON.stringify(buildPayload(timeOnPageSeconds)),
             keepalive: true,
           });
-          console.log("Analytics status:", res.status);
-        } catch (err) {
-          console.error("[analytics] fallo de red:", err);
-        }
+        } catch (_) {}
       };
 
       window.addEventListener("visibilitychange", () => {
@@ -301,7 +296,6 @@ const features = [
         }
       });
 
-      console.log("[analytics] key cargada:", analyticsKey ? "SÍ" : "NO — revisa .env");
       await sendVisit(null);
     })();
   </script>
