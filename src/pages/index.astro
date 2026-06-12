@@ -182,14 +182,22 @@ const ranks = [
         <div class="btn-hint" data-i18n="btn-hint">Gratis · Sin registro previo · Rol de fundador para los primeros</div>
       </div>
 
-      <div class="server-ip" id="server-ip">
-        <span class="ip-label" data-i18n="ip-label">CONECTAR AHORA</span>
-        <code class="ip-text">cs2.randompicks.es:27015</code>
-        <button class="ip-copy" id="copy-btn" title="Copiar IP">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          <span id="copy-label" data-i18n="copy-label">Copiar IP</span>
-        </button>
+      <div class="ip-gt-group">
+        <div class="server-ip" id="server-ip">
+          <span class="ip-label" data-i18n="ip-label">CONECTAR AHORA</span>
+          <code class="ip-text">cs2.randompicks.es:27015</code>
+          <button class="ip-copy" id="copy-btn" title="Copiar IP">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span id="copy-label" data-i18n="copy-label">Copiar IP</span>
+          </button>
+        </div>
+        <div class="hero-gametracker">
+          <a href="https://www.gametracker.com/server_info/159.195.150.62:27015/" target="_blank" rel="noopener">
+            <img src="https://cache.gametracker.com/server_info/159.195.150.62:27015/b_560_95_1.png" border="0" width="560" height="95" alt="GameTracker server stats" />
+          </a>
+        </div>
       </div>
+
     </div>
 
     <div class="hero-visual">
@@ -720,8 +728,9 @@ const ranks = [
   .btn-primary:hover { background: var(--discord-hover); transform: translateY(-2px); box-shadow: 0 8px 36px rgba(88,101,242,0.55); }
   .btn-hint { font-size: 0.75rem; color: var(--muted); padding-left: 4px; }
 
+  .ip-gt-group { display: inline-flex; flex-direction: column; gap: 10px; }
   .server-ip {
-    display: inline-flex; align-items: center; gap: 12px;
+    display: flex; align-items: center; gap: 12px;
     background: var(--surface); border: 1px solid var(--border);
     border-radius: 10px; padding: 10px 16px;
   }
@@ -734,6 +743,13 @@ const ranks = [
     padding: 5px 10px; cursor: pointer; transition: background 0.2s;
   }
   .ip-copy:hover { background: rgba(255,107,43,0.2); }
+
+  .hero-gametracker a {
+    display: block; border-radius: 8px; overflow: hidden; opacity: 0.85;
+    transition: opacity 0.2s;
+  }
+  .hero-gametracker a:hover { opacity: 1; }
+  .hero-gametracker img { display: block; width: 100%; height: auto; }
 
   /* Crosshair */
   .hero-visual { position: relative; z-index: 1; animation: fadeInUp 1s ease 0.3s both; flex-shrink: 0; }
