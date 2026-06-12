@@ -1,0 +1,9 @@
+Test file to verify git push
+Repository: LandingRandomPicks
+Created by: GitHub Copilot
+Purpose: This file is a simple test to confirm that commits can be pushed to the remote repository.
+
+Instructions:
+1. git add test_push.txt
+2. git commit -m "Add test_push.txt for push verification"
+3. git push origin master
