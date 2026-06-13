@@ -26,14 +26,9 @@ jobs:
         run: docker push torment93/randompicks-landing:latest
 
       - name: Configure SSH
-        shell: bash
         run: |
           mkdir -p ~/.ssh
-
-          cat > ~/.ssh/id_ed25519 << 'EOF'
-${{ secrets.SSH_PRIVATE_KEY }}
-EOF
-
+          printf "%s" "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
 
@@ -44,6 +39,5 @@ EOF
       - name: Deploy
         run: |
           ssh -i ~/.ssh/id_ed25519 \
-          ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
-          "kubectl rollout restart deployment/landing -n randompicks && \
-           kubectl rollout status deployment/landing -n randompicks"
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
+            "kubectl rollout restart deployment/landing -n randompicks && kubectl rollout status deployment/landing -n randompicks"
