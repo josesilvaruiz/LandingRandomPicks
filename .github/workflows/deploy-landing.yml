@@ -28,21 +28,16 @@ jobs:
       - name: Configure SSH
         run: |
           mkdir -p ~/.ssh
-          cat > ~/.ssh/id_ed25519 <<EOF
-${{ secrets.SSH_PRIVATE_KEY }}
-EOF
+          echo "${{ secrets.SSH_PRIVATE_KEY_B64 }}" | base64 -d > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
 
-      - name: Debug SSH file
+      - name: Test SSH
         run: |
-          echo "LINES:"
-          wc -l ~/.ssh/id_ed25519
-          echo "FIRST:"
-          head -n 1 ~/.ssh/id_ed25519
-          echo "LAST:"
-          tail -n 1 ~/.ssh/id_ed25519
-          echo "CONTENT:"
-          cat ~/.ssh/id_ed25519
+          ssh -o StrictHostKeyChecking=no \
+            -i ~/.ssh/id_ed25519 \
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
+            "whoami"
 
       - name: Deploy
         run: |
