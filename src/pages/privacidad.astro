@@ -1,0 +1,136 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const updated = '1 de octubre de 2026';
+---
+
+<Layout
+  title="Política de privacidad — RandomPicks CS2"
+  description="Qué datos trata la web de RandomPicks CS2, para qué se usan, qué cookies emplea la publicidad de Google y cómo ejercer tus derechos."
+>
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="logo-img-link">
+        <img src="/random_picks_logo.jpg" alt="RandomPicks" style="height:44px;width:72px;object-fit:cover;object-position:center;border-radius:8px;display:block;" />
+      </a>
+      <a href="/" class="nav-back">← Volver al inicio</a>
+    </div>
+  </nav>
+
+  <main class="legal">
+    <h1>Política de privacidad</h1>
+    <p class="legal-updated">Última actualización: {updated}</p>
+
+    <h2>Quién es el responsable</h2>
+    <p>
+      Esta web (<code>randompicks.es</code>) es la página de RandomPicks CS2, un servidor comunitario de
+      Counter-Strike 2 sin relación con Valve Corporation. Para cualquier cuestión sobre tus datos puedes
+      escribir a la administración a través de nuestro
+      <a href="https://discord.gg/HSMZT6njnk" target="_blank" rel="noopener">servidor de Discord</a>.
+    </p>
+
+    <h2>Qué datos tratamos y para qué</h2>
+    <ul>
+      <li>
+        <strong>Estadísticas de visitas propias.</strong> Al cargar la página de inicio se registra la ruta
+        visitada, el idioma del navegador, la resolución de pantalla y el tiempo de permanencia. Sirven para
+        saber cuánta gente visita la web y no se usan para identificarte.
+      </li>
+      <li>
+        <strong>Ranking.</strong> La página de ranking muestra el nombre de Steam, la puntuación y los tiempos
+        de los jugadores del servidor. Permite buscar por nombre o por SteamID64. Estos datos proceden de
+        tu actividad dentro del servidor de juego.
+      </li>
+      <li>
+        <strong>Preferencia de idioma.</strong> Si cambias el idioma, la elección se guarda en el
+        almacenamiento local de tu navegador (<code>rp-lang</code>). No sale de tu dispositivo.
+      </li>
+      <li>
+        <strong>Datos técnicos.</strong> Como cualquier sitio web, el servidor recibe tu dirección IP y el
+        tipo de navegador para poder entregarte la página.
+      </li>
+    </ul>
+
+    <h2>Publicidad de Google</h2>
+    <p>
+      Esta web utiliza Google AdSense para mostrar anuncios. Google y sus socios pueden usar cookies e
+      identificadores para mostrar anuncios, limitar las veces que se repiten y medir su rendimiento y,
+      solo si das tu consentimiento, personalizarlos según tus visitas a este y otros sitios.
+    </p>
+    <p>
+      La primera vez que entras desde el Espacio Económico Europeo, el Reino Unido o Suiza se te muestra un
+      mensaje para aceptar, rechazar o configurar ese uso. Si lo rechazas, los anuncios que veas no estarán
+      personalizados. Más información en
+      <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">cómo usa Google los datos de los sitios que utilizan sus servicios</a>
+      y en la <a href="https://adssettings.google.com" target="_blank" rel="noopener">configuración de anuncios de Google</a>.
+    </p>
+    <p>
+      <button type="button" id="consent-revoke" class="legal-btn">Cambiar mis preferencias de consentimiento</button>
+    </p>
+
+    <h2>Enlaces a terceros</h2>
+    <p>
+      La web enlaza a Discord y Ko-fi. Al visitarlos se aplican sus propias políticas de privacidad.
+    </p>
+
+    <h2>Tus derechos</h2>
+    <p>
+      Puedes pedir el acceso, la rectificación o la supresión de tus datos (por ejemplo, que se retire tu
+      nombre del ranking), así como oponerte a su tratamiento, contactando con la administración por
+      Discord. Si consideras que no se han atendido tus derechos, puedes reclamar ante la
+      <a href="https://www.aepd.es" target="_blank" rel="noopener">Agencia Española de Protección de Datos</a>.
+    </p>
+
+    <h2>Cambios en esta política</h2>
+    <p>Si esta política cambia, se publicará aquí la nueva versión con su fecha de actualización.</p>
+  </main>
+
+  <script is:inline>
+    // Reabre el mensaje de consentimiento de Google (solo disponible si la CMP está cargada).
+    document.getElementById('consent-revoke').addEventListener('click', function() {
+      window.googlefc = window.googlefc || {};
+      window.googlefc.callbackQueue = window.googlefc.callbackQueue || [];
+      window.googlefc.callbackQueue.push(function() { window.googlefc.showRevocationMessage(); });
+    });
+  </script>
+</Layout>
+
+<style>
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    max-width: 1200px; margin: 0 auto; padding: 0 24px;
+    height: 64px; display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo-img-link { display: flex; align-items: center; text-decoration: none; }
+  .nav-back { color: var(--muted); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
+  .nav-back:hover { color: var(--text); }
+
+  .legal { max-width: 760px; margin: 0 auto; padding: 112px 24px 72px; }
+  .legal h1 { font-size: clamp(2rem, 5vw, 2.8rem); line-height: 1.1; margin-bottom: 8px; }
+  .legal-updated { color: var(--muted); font-size: 0.85rem; margin-bottom: 32px; }
+  .legal h2 { font-size: 1.35rem; margin: 32px 0 10px; color: var(--text); }
+  .legal p, .legal li { color: #b9b9d0; margin-bottom: 12px; }
+  .legal ul { padding-left: 20px; }
+  .legal strong { color: var(--text); }
+  .legal a { color: var(--orange); text-decoration: none; }
+  .legal a:hover { text-decoration: underline; }
+  .legal code {
+    font-family: ui-monospace, 'Cascadia Code', Consolas, monospace; font-size: 0.85em;
+    background: var(--bg2); border: 1px solid var(--border); border-radius: 6px; padding: 2px 6px; color: var(--text);
+  }
+  .legal-btn {
+    background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; color: var(--text);
+    font: inherit; font-size: 0.9rem; padding: 10px 16px; cursor: pointer; transition: border-color 0.2s;
+  }
+  .legal-btn:hover { border-color: var(--orange); }
+
+  @media (max-width: 600px) {
+    .nav-inner { padding: 0 16px; }
+    .legal { padding: 92px 16px 56px; }
+  }
+</style>

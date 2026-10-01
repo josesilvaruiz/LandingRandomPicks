@@ -199,12 +199,13 @@ Astro.response.headers.set('Cache-Control', 'public, max-age=60');
       <span data-i18n="rk-footnote">Se actualiza cada minuto · Conéctate y entra en el ranking:</span>
       <code>connect cs2.randompicks.es:27015</code>
     </p>
+    <p class="rk-footnote rk-legal"><a href="/privacidad" data-i18n="footer-privacy">Privacidad</a></p>
   </main>
 
   <script is:inline>
     var t = {
       es: {
-        'ad-label': 'Publicidad',
+        'ad-label': 'Publicidad', 'footer-privacy': 'Privacidad',
         'nav-home': 'Home', 'nav-kofi': '☕ Support us', 'rk-tag': 'RANKING MINIGAMES', 'rk-title': 'Los más rápidos del servidor',
         'rk-sub': 'Top 20 global por puntos. Elige un mapa para ver solo sus records.',
         'rk-map-label': 'Mapa', 'rk-search-label': 'Jugador',
@@ -219,7 +220,7 @@ Astro.response.headers.set('Cache-Control', 'public, max-age=60');
         'rk-footnote': 'Se actualiza cada minuto · Conéctate y entra en el ranking:',
       },
       en: {
-        'ad-label': 'Advertisement',
+        'ad-label': 'Advertisement', 'footer-privacy': 'Privacy',
         'nav-home': 'Home', 'nav-kofi': '☕ Support us', 'rk-tag': 'MINIGAMES RANKING', 'rk-title': 'The fastest players on the server',
         'rk-sub': 'Global top 20 by points. Pick a map to see only its records.',
         'rk-map-label': 'Map', 'rk-search-label': 'Player',
@@ -473,6 +474,9 @@ Astro.response.headers.set('Cache-Control', 'public, max-age=60');
 
   .rk-footnote { text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 32px; }
   .rk-footnote code { color: var(--orange); margin-left: 6px; }
+  .rk-legal { margin-top: 12px; }
+  .rk-legal a { color: var(--muted); text-decoration: none; }
+  .rk-legal a:hover { color: var(--text); }
 
   @keyframes rowIn {
     from { opacity: 0; transform: translateY(8px); }

@@ -10,4 +10,8 @@
     <loc>https://randompicks.es/ranking</loc>
     <changefreq>hourly</changefreq>
   </url>
+  <url>
+    <loc>https://randompicks.es/privacidad</loc>
+    <changefreq>yearly</changefreq>
+  </url>
 </urlset>
