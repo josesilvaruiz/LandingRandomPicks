@@ -15,7 +15,13 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build image
-        run: docker build -t torment93/randompicks-landing:latest .
+        env:
+          PUBLIC_ANALYTICS_KEY: ${{ secrets.PUBLIC_ANALYTICS_KEY }}
+        run: |
+          if [ -z "$PUBLIC_ANALYTICS_KEY" ]; then
+            echo "::warning::Falta el secret PUBLIC_ANALYTICS_KEY: las visitas no se registraran en el panel"
+          fi
+          docker build --build-arg PUBLIC_ANALYTICS_KEY="$PUBLIC_ANALYTICS_KEY" -t torment93/randompicks-landing:latest .
       - name: Push image
         run: docker push torment93/randompicks-landing:latest
       - name: Configure SSH

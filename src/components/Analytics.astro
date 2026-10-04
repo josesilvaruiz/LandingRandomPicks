@@ -1,0 +1,27 @@
+---
+// Registra una visita por carga de página en el panel (/panel/api/analytics/visit).
+// La clave se inyecta en tiempo de build (PUBLIC_ANALYTICS_KEY): en el Dockerfile
+// llega como build-arg desde el secret de GitHub Actions. No es un secreto real
+// (acaba en el HTML); el panel además valida el Origin y limita por IP.
+const analyticsKey = import.meta.env.PUBLIC_ANALYTICS_KEY ?? '';
+---
+<script is:inline define:vars={{ analyticsKey }}>
+  (function () {
+    if (!analyticsKey) return;
+    if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') return;
+    try {
+      fetch('https://randompicks.es/panel/api/analytics/visit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-Analytics-Key': analyticsKey },
+        body: JSON.stringify({
+          path: location.pathname,
+          language: navigator.language,
+          screenWidth: screen.width,
+          screenHeight: screen.height,
+          timeOnPageSeconds: null,
+        }),
+        keepalive: true,
+      }).catch(function () {});
+    } catch (_) {}
+  })();
+</script>

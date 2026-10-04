@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import AdBanner from '../components/AdBanner.astro';
+import Analytics from '../components/Analytics.astro';
 import { AD_SLOTS } from '../lib/ads';
 
 const modes = [
@@ -432,18 +433,7 @@ const ranks = [
     </div>
   </footer>
 
-  <!-- ANALYTICS -->
-  <script define:vars={{ analyticsKey: import.meta.env.PUBLIC_ANALYTICS_KEY }}>
-    (async () => {
-      if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') return;
-      const ENDPOINT = "https://randompicks.es/panel/api/analytics/visit";
-      const start = Date.now();
-      const buildPayload = (t) => ({ path: window.location.pathname, language: navigator.language, screenWidth: window.screen.width, screenHeight: window.screen.height, timeOnPageSeconds: t });
-      const sendVisit = async (t) => { try { await fetch(ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", "X-Analytics-Key": analyticsKey }, body: JSON.stringify(buildPayload(t)), keepalive: true }); } catch (_) {} };
-      window.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden") { const s = Math.round((Date.now() - start) / 1000); navigator.sendBeacon ? navigator.sendBeacon(ENDPOINT, new Blob([JSON.stringify(buildPayload(s))], { type: "application/json" })) : sendVisit(s); } });
-      await sendVisit(null);
-    })();
-  </script>
+  <Analytics />
 
   <!-- UI + I18N -->
   <script is:inline>

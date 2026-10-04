@@ -8,7 +8,9 @@ RUN npm ci
 
 COPY . .
 
-RUN npm run build
+# Clave pública de analytics: Astro la incrusta en el HTML durante el build.
+ARG PUBLIC_ANALYTICS_KEY=""
+RUN PUBLIC_ANALYTICS_KEY="$PUBLIC_ANALYTICS_KEY" npm run build
 
 ENV HOST=0.0.0.0
 ENV PORT=4321
