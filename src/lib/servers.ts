@@ -29,6 +29,14 @@ export const SERVERS: GameServer[] = [
     host: 'cs2.randompicks.es',
     port: 27015,
   },
+  {
+    id: 'surf',
+    name: 'RandomPicks · Surf',
+    mode: 'Surf · Rangos',
+    modeEn: 'Surf · Ranks',
+    host: 'cs2.randompicks.es',
+    port: 27016,
+  },
 ];
 
 export interface ServerStatus {
