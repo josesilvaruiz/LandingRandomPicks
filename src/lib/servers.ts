@@ -18,6 +18,8 @@ export interface GameServer {
   modeEn: string;
   host: string;
   port: number;
+  /** IP para el botón de conectar: steam://connect no resuelve nombres de dominio de forma fiable. */
+  ip: string;
 }
 
 export const SERVERS: GameServer[] = [
@@ -27,6 +29,7 @@ export const SERVERS: GameServer[] = [
     mode: 'Minigames · Bhop · Rangos',
     modeEn: 'Minigames · Bhop · Ranks',
     host: 'cs2.randompicks.es',
+    ip: '159.195.150.62',
     port: 27015,
   },
   {
@@ -35,6 +38,7 @@ export const SERVERS: GameServer[] = [
     mode: 'Surf · Rangos',
     modeEn: 'Surf · Ranks',
     host: 'cs2.randompicks.es',
+    ip: '159.195.150.62',
     port: 27016,
   },
 ];
