@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import AdBanner from '../components/AdBanner.astro';
 import Analytics from '../components/Analytics.astro';
 import { AD_SLOTS } from '../lib/ads';
+import { SERVERS } from '../lib/servers';
 
 const modes = [
   {
@@ -108,6 +109,7 @@ const ranks = [
       </a>
       <ul class="nav-links">
         <li><a href="#" data-i18n="nav-home">Home</a></li>
+        <li><a href="#servidores" data-i18n="nav-servers">Servidores</a></li>
         <li><a href="#modos" data-i18n="nav-modos">Modos</a></li>
         <li><a href="#progresion" data-i18n="nav-progression">Progresión</a></li>
         <li><a href="#faq" data-i18n="nav-faq">FAQ</a></li>
@@ -129,6 +131,7 @@ const ranks = [
     </div>
     <div class="mobile-menu" id="mobile-menu">
       <a href="#" data-i18n="nav-home">Home</a>
+      <a href="#servidores" data-i18n="nav-servers">Servidores</a>
       <a href="#modos" data-i18n="nav-modos">Modos</a>
       <a href="#progresion" data-i18n="nav-progression">Progresión</a>
       <a href="#faq" data-i18n="nav-faq">FAQ</a>
@@ -261,6 +264,39 @@ const ranks = [
       </div>
     </div>
   </div>
+
+  <!-- SERVIDORES -->
+  <section class="section section-alt" id="servidores">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag" data-i18n="srv-tag">SERVIDORES</div>
+        <h2 class="section-title" data-i18n="srv-title">Nuestros servidores</h2>
+        <p class="section-sub" data-i18n="srv-sub">Estado en directo. Pulsa conectar y CS2 se abrirá directamente en el servidor.</p>
+      </div>
+      <div class="servers-grid">
+        {SERVERS.map((s) => (
+          <div class="server-card" data-server={s.id} data-state="loading">
+            <div class="server-card-top">
+              <span class="server-status">
+                <span class="server-dot" aria-hidden="true"></span>
+                <span class="server-status-label" data-i18n="srv-loading">Comprobando…</span>
+              </span>
+              <span class="server-players"></span>
+            </div>
+            <h3 class="server-name">{s.name}</h3>
+            <p class="server-mode" data-i18n={`srv-${s.id}-mode`} data-en={s.modeEn}>{s.mode}</p>
+            <div class="server-map"></div>
+            <div class="server-address"><code>{s.host}:{s.port}</code></div>
+            <a class="server-connect" href={`steam://connect/${s.host}:${s.port}`}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              <span data-i18n="srv-connect">Conectar</span>
+            </a>
+          </div>
+        ))}
+      </div>
+      <p class="servers-hint" data-i18n="srv-hint">Necesitas tener Steam y CS2 instalados. Si no se abre, copia la IP y escribe connect en la consola.</p>
+    </div>
+  </section>
 
   <!-- MODOS -->
   <section class="section" id="modos">
@@ -440,7 +476,10 @@ const ranks = [
     var t = {
       es: {
         'ad-label': 'Publicidad', 'footer-privacy': 'Privacidad',
-        'nav-home': 'Home', 'nav-modos': 'Modos', 'nav-progression': 'Progresión', 'nav-faq': 'FAQ', 'nav-ranking': 'Ranking', 'nav-kofi': '☕ Support us',
+        'nav-home': 'Home', 'nav-modos': 'Modos', 'nav-progression': 'Progresión', 'nav-faq': 'FAQ', 'nav-ranking': 'Ranking', 'nav-kofi': '☕ Support us', 'nav-servers': 'Servidores',
+        'srv-tag': 'SERVIDORES', 'srv-title': 'Nuestros servidores', 'srv-sub': 'Estado en directo. Pulsa conectar y CS2 se abrirá directamente en el servidor.',
+        'srv-loading': 'Comprobando…', 'srv-online': 'Online', 'srv-offline': 'Offline', 'srv-unknown': 'Estado no disponible', 'srv-connect': 'Conectar', 'srv-map': 'Mapa',
+        'srv-hint': 'Necesitas tener Steam y CS2 instalados. Si no se abre, copia la IP y escribe connect en la consola.',
         'hero-badge': 'ROL DE FUNDADOR DISPONIBLE — PLAZAS LIMITADAS',
         'hero-title': 'El servidor CS2 de la<br /><span class="title-highlight"><span class="title-text">comunidad hispanohablante</span><span class="title-underline"></span></span>',
         'hero-sub': 'Minigames, Bhop con rankings y tienda de skins — todo gratis. Arrancamos ahora y los primeros que entren consiguen el rol de fundador en Discord.',
@@ -502,7 +541,10 @@ const ranks = [
       },
       en: {
         'ad-label': 'Advertisement', 'footer-privacy': 'Privacy',
-        'nav-home': 'Home', 'nav-modos': 'Modes', 'nav-progression': 'Progression', 'nav-faq': 'FAQ', 'nav-ranking': 'Ranking', 'nav-kofi': '☕ Support us',
+        'nav-home': 'Home', 'nav-modos': 'Modes', 'nav-progression': 'Progression', 'nav-faq': 'FAQ', 'nav-ranking': 'Ranking', 'nav-kofi': '☕ Support us', 'nav-servers': 'Servers',
+        'srv-tag': 'SERVERS', 'srv-title': 'Our servers', 'srv-sub': 'Live status. Hit connect and CS2 will open straight into the server.',
+        'srv-loading': 'Checking…', 'srv-online': 'Online', 'srv-offline': 'Offline', 'srv-unknown': 'Status unavailable', 'srv-connect': 'Connect', 'srv-map': 'Map',
+        'srv-hint': 'You need Steam and CS2 installed. If it doesn\'t open, copy the IP and type connect in the console.',
         'hero-badge': 'FOUNDER ROLE AVAILABLE — LIMITED SPOTS',
         'hero-title': 'The CS2 server for the<br /><span class="title-highlight"><span class="title-text">Spanish-speaking community</span><span class="title-underline"></span></span>',
         'hero-sub': 'Minigames, Bhop with rankings and skin shop — all free. We just launched and the first to join get the founder role on Discord.',
@@ -564,6 +606,13 @@ const ranks = [
       },
     };
 
+    /* Textos por servidor: vienen de src/lib/servers.ts vía atributos del HTML */
+    document.querySelectorAll('.server-mode').forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      t.es[key] = el.textContent;
+      t.en[key] = el.getAttribute('data-en');
+    });
+
     function applyLang(lang) {
       var dict = t[lang];
       document.querySelectorAll('[data-i18n]').forEach(function(el) {
@@ -620,6 +669,52 @@ const ranks = [
       copyLabel.textContent = currentLang === 'es' ? '¡Copiado!' : 'Copied!';
       setTimeout(function() { copyLabel.textContent = t[currentLang]['copy-label']; }, 2000);
     });
+
+    /* ESTADO DE SERVIDORES (/api/servers.json, cacheado 30 s en el servidor) */
+    function setServerLabel(el, key) {
+      el.setAttribute('data-i18n', key);
+      el.textContent = t[currentLang][key];
+    }
+    function renderServers(list) {
+      document.querySelectorAll('.server-card').forEach(function(card) {
+        var st = null;
+        for (var i = 0; list && i < list.length; i++) if (list[i].id === card.getAttribute('data-server')) st = list[i];
+        var label   = card.querySelector('.server-status-label');
+        var players = card.querySelector('.server-players');
+        var map     = card.querySelector('.server-map');
+        map.textContent = '';
+        players.textContent = '';
+        if (!st) {
+          card.setAttribute('data-state', 'unknown');
+          setServerLabel(label, 'srv-unknown');
+        } else if (!st.online) {
+          card.setAttribute('data-state', 'offline');
+          setServerLabel(label, 'srv-offline');
+        } else {
+          card.setAttribute('data-state', 'online');
+          setServerLabel(label, 'srv-online');
+          if (typeof st.players === 'number' && typeof st.maxPlayers === 'number') players.textContent = st.players + ' / ' + st.maxPlayers;
+          if (st.map) {
+            var mapLabel = document.createElement('span');
+            mapLabel.className = 'server-map-label';
+            setServerLabel(mapLabel, 'srv-map');
+            var mapName = document.createElement('code');
+            mapName.textContent = st.map;
+            map.appendChild(mapLabel);
+            map.appendChild(mapName);
+          }
+        }
+      });
+    }
+    function loadServers() {
+      if (!document.querySelector('.server-card')) return;
+      fetch('/api/servers.json', { headers: { 'Accept': 'application/json' } })
+        .then(function(r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+        .then(function(d) { renderServers(d.servers); })
+        .catch(function() { renderServers(null); });
+    }
+    loadServers();
+    setInterval(function() { if (!document.hidden) loadServers(); }, 60000);
 
     /* FAQ ACCORDION */
     document.querySelectorAll('.faq-question').forEach(function(btn) {
@@ -810,6 +905,37 @@ const ranks = [
 
   /* ── SECTIONS ── */
   .section { padding: 100px 24px; position: relative; }
+
+  /* ── SERVIDORES ── */
+  .servers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 380px)); justify-content: center; gap: 20px; }
+  .server-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+    padding: 24px; display: flex; flex-direction: column; gap: 10px; transition: border-color 0.2s;
+  }
+  .server-card:hover { border-color: var(--orange-dim); }
+  .server-card-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .server-status { display: inline-flex; align-items: center; gap: 8px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+  .server-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--muted); }
+  .server-card[data-state="online"] .server-status { color: #22c55e; }
+  .server-card[data-state="online"] .server-dot { background: #22c55e; box-shadow: 0 0 10px #22c55e99; }
+  .server-card[data-state="offline"] .server-status { color: #ef4444; }
+  .server-card[data-state="offline"] .server-dot { background: #ef4444; }
+  .server-card[data-state="loading"] .server-dot { animation: flicker 1.5s infinite; }
+  .server-players { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--text); }
+  .server-name { font-size: 1.4rem; line-height: 1.2; }
+  .server-mode { color: var(--muted); font-size: 0.9rem; }
+  .server-map { display: flex; gap: 8px; align-items: center; font-size: 0.85rem; color: var(--muted); min-height: 1.2em; }
+  .server-map code, .server-address code { color: var(--text); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; overflow-wrap: anywhere; }
+  .server-address { font-size: 0.85rem; }
+  .server-connect {
+    margin-top: 8px; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--orange); color: #fff; text-decoration: none; font-weight: 600;
+    padding: 12px 18px; border-radius: 8px; transition: background 0.2s;
+  }
+  .server-connect:hover { background: var(--orange-dim); }
+  .server-connect:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+  .server-card[data-state="offline"] .server-connect { background: var(--surface2); color: var(--muted); }
+  .servers-hint { text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 28px; }
   .section-alt { background: var(--bg2); }
   .container { max-width: 1200px; margin: 0 auto; }
   .section-header { text-align: center; margin-bottom: 64px; }
