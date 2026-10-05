@@ -89,14 +89,18 @@ function queryInfo(host: string, port: number): Promise<Omit<ServerStatus, 'id' 
     const timer = setTimeout(() => finish(new Error('A2S: timeout')), TIMEOUT_MS);
 
     socket.on('error', (err) => finish(err));
-    socket.on('message', (msg) => {
+    socket.on('message', (msg, rinfo) => {
+      // Solo respuestas del puerto consultado. No se filtra por IP: los servidores corren en el
+      // mismo nodo con hostNetwork y la respuesta llega desde la IP interna del nodo (10.42.0.1),
+      // no desde la pública, así que un socket "conectado" a la IP pública las descartaría todas.
+      if (rinfo.port !== port) return;
       try {
         if (msg.length < 5 || !msg.subarray(0, 4).equals(HEADER)) throw new Error('A2S: cabecera inválida');
         const type = msg[4];
         if (type === 0x41 && msg.length >= 9 && !challenged) {
           // El servidor pide repetir la consulta con su challenge.
           challenged = true;
-          socket.send(Buffer.concat([INFO_REQUEST, msg.subarray(5, 9)]));
+          socket.send(Buffer.concat([INFO_REQUEST, msg.subarray(5, 9)]), port, host);
           return;
         }
         if (type !== 0x49) throw new Error(`A2S: tipo inesperado 0x${type.toString(16)}`);
@@ -105,8 +109,7 @@ function queryInfo(host: string, port: number): Promise<Omit<ServerStatus, 'id' 
         finish(err as Error);
       }
     });
-    // Socket "conectado": solo se aceptan respuestas que vengan de ese host:puerto.
-    socket.connect(port, host, () => socket.send(INFO_REQUEST));
+    socket.send(INFO_REQUEST, port, host);
   });
 }
 
