@@ -11,6 +11,10 @@
     <changefreq>hourly</changefreq>
   </url>
   <url>
+    <loc>https://randompicks.es/servidores</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://randompicks.es/privacidad</loc>
     <changefreq>yearly</changefreq>
   </url>

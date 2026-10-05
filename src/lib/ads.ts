@@ -12,4 +12,5 @@ export const ADSENSE_CLIENT = 'ca-pub-2583156431916553';
 export const AD_SLOTS = {
   landing: '',
   ranking: '',
+  servidores: '',
 };

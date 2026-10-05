@@ -1,0 +1,330 @@
+---
+import Layout from '../layouts/Layout.astro';
+import AdBanner from '../components/AdBanner.astro';
+import Analytics from '../components/Analytics.astro';
+import { AD_SLOTS } from '../lib/ads';
+import { SERVERS } from '../lib/servers';
+
+// Página estática: el estado en vivo lo pide el navegador a /api/servers.json
+// (cacheado 30 s en el servidor), así la página carga al instante aunque algún
+// servidor no responda.
+---
+
+<Layout
+  title="Servidores CS2 — RandomPicks"
+  description="Estado en directo de los servidores de CS2 de RandomPicks (Minigames y Surf): mapa, jugadores y botón para conectarte directamente."
+>
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="logo-img-link">
+        <img src="/random_picks_logo.jpg" alt="RandomPicks" style="height:44px;width:72px;object-fit:cover;object-position:center;border-radius:8px;display:block;" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="/" data-i18n="nav-home">Home</a></li>
+        <li><a href="/ranking" data-i18n="nav-ranking">Ranking</a></li>
+        <li><a href="https://discord.gg/HSMZT6njnk" target="_blank" rel="noopener" class="nav-discord">Discord</a></li>
+        <li><a href="https://ko-fi.com/randompicks" target="_blank" rel="noopener" class="nav-kofi" data-i18n="nav-kofi">☕ Support us</a></li>
+      </ul>
+      <div class="nav-right">
+        <button id="lang-toggle" class="lang-toggle" aria-label="Switch to English" title="Switch to English">
+          <span class="lang-globe" aria-hidden="true">🌐</span>
+          <span class="lang-es lang-active" id="lang-es">ES</span>
+          <span class="lang-sep" aria-hidden="true">|</span>
+          <span class="lang-en lang-inactive" id="lang-en">EN</span>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menú" aria-controls="mobile-menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="/" data-i18n="nav-home">Home</a>
+      <a href="/ranking" data-i18n="nav-ranking">Ranking</a>
+      <a href="https://discord.gg/HSMZT6njnk" target="_blank" rel="noopener">Discord</a>
+      <a href="https://ko-fi.com/randompicks" target="_blank" rel="noopener" data-i18n="nav-kofi">☕ Support us</a>
+    </div>
+  </nav>
+
+  <div class="sv-bg" aria-hidden="true">
+    <div class="sv-orb sv-orb1"></div>
+    <div class="sv-orb sv-orb2"></div>
+    <div class="sv-grid-overlay"></div>
+  </div>
+
+  <main class="servers-page">
+    <header class="sv-header">
+      <div class="section-tag" data-i18n="srv-tag">SERVIDORES</div>
+      <h1 class="sv-title" data-i18n="srv-title">Nuestros servidores</h1>
+      <p class="sv-sub" data-i18n="srv-sub">Estado en directo. Pulsa conectar y CS2 se abrirá directamente en el servidor.</p>
+    </header>
+
+    <div class="servers-grid">
+      {SERVERS.map((s) => (
+        <div class="server-card" data-server={s.id} data-state="loading">
+          <div class="server-card-top">
+            <span class="server-status">
+              <span class="server-dot" aria-hidden="true"></span>
+              <span class="server-status-label" data-i18n="srv-loading">Comprobando…</span>
+            </span>
+            <span class="server-players"></span>
+          </div>
+          <h2 class="server-name">{s.name}</h2>
+          <p class="server-mode" data-i18n={`srv-${s.id}-mode`} data-en={s.modeEn}>{s.mode}</p>
+          <div class="server-map"></div>
+          <div class="server-address"><code>{s.host}:{s.port}</code></div>
+          <a class="server-connect" href={`steam://connect/${s.host}:${s.port}`}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            <span data-i18n="srv-connect">Conectar</span>
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <p class="sv-hint" data-i18n="srv-hint">Necesitas tener Steam y CS2 instalados. Si no se abre, copia la IP y escribe connect en la consola.</p>
+
+    <AdBanner unit={AD_SLOTS.servidores} />
+
+    <p class="sv-footnote" data-i18n="srv-footnote">El estado se actualiza cada minuto.</p>
+    <p class="sv-footnote sv-legal"><a href="/privacidad" data-i18n="footer-privacy">Privacidad</a></p>
+  </main>
+
+  <Analytics />
+
+  <script is:inline>
+    var t = {
+      es: {
+        'ad-label': 'Publicidad', 'footer-privacy': 'Privacidad',
+        'nav-home': 'Home', 'nav-ranking': 'Ranking', 'nav-kofi': '☕ Support us',
+        'srv-tag': 'SERVIDORES', 'srv-title': 'Nuestros servidores', 'srv-sub': 'Estado en directo. Pulsa conectar y CS2 se abrirá directamente en el servidor.',
+        'srv-loading': 'Comprobando…', 'srv-online': 'Online', 'srv-offline': 'Offline', 'srv-unknown': 'Estado no disponible', 'srv-connect': 'Conectar', 'srv-map': 'Mapa',
+        'srv-hint': 'Necesitas tener Steam y CS2 instalados. Si no se abre, copia la IP y escribe connect en la consola.',
+        'srv-footnote': 'El estado se actualiza cada minuto.',
+      },
+      en: {
+        'ad-label': 'Advertisement', 'footer-privacy': 'Privacy',
+        'nav-home': 'Home', 'nav-ranking': 'Ranking', 'nav-kofi': '☕ Support us',
+        'srv-tag': 'SERVERS', 'srv-title': 'Our servers', 'srv-sub': 'Live status. Hit connect and CS2 will open straight into the server.',
+        'srv-loading': 'Checking…', 'srv-online': 'Online', 'srv-offline': 'Offline', 'srv-unknown': 'Status unavailable', 'srv-connect': 'Connect', 'srv-map': 'Map',
+        'srv-hint': 'You need Steam and CS2 installed. If it doesn\'t open, copy the IP and type connect in the console.',
+        'srv-footnote': 'Status refreshes every minute.',
+      },
+    };
+
+    /* Textos por servidor: vienen de src/lib/servers.ts vía atributos del HTML */
+    document.querySelectorAll('.server-mode').forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      t.es[key] = el.textContent;
+      t.en[key] = el.getAttribute('data-en');
+    });
+
+    function applyLang(lang) {
+      var dict = t[lang];
+      document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        if (dict[key] !== undefined) el.textContent = dict[key];
+      });
+      var esEl = document.getElementById('lang-es');
+      var enEl = document.getElementById('lang-en');
+      var btn  = document.getElementById('lang-toggle');
+      var on = lang === 'es' ? esEl : enEl, off = lang === 'es' ? enEl : esEl;
+      on.classList.add('lang-active');   on.classList.remove('lang-inactive');
+      off.classList.add('lang-inactive'); off.classList.remove('lang-active');
+      var label = lang === 'es' ? 'Switch to English' : 'Cambiar a Español';
+      btn.setAttribute('aria-label', label);
+      btn.setAttribute('title', label);
+      document.documentElement.setAttribute('lang', lang);
+    }
+
+    var currentLang = (function() {
+      var s = null;
+      try { s = localStorage.getItem('rp-lang'); } catch (_) {}
+      if (s === 'es' || s === 'en') return s;
+      return navigator.language.startsWith('es') ? 'es' : 'en';
+    })();
+    if (currentLang !== 'es') applyLang(currentLang);
+
+    document.getElementById('lang-toggle').addEventListener('click', function() {
+      currentLang = currentLang === 'es' ? 'en' : 'es';
+      try { localStorage.setItem('rp-lang', currentLang); } catch (_) {}
+      applyLang(currentLang);
+    });
+
+    var hamburger  = document.getElementById('hamburger');
+    var mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', function() {
+      var open = mobileMenu.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    /* ESTADO DE SERVIDORES (/api/servers.json, cacheado 30 s en el servidor) */
+    function setServerLabel(el, key) {
+      el.setAttribute('data-i18n', key);
+      el.textContent = t[currentLang][key];
+    }
+    function renderServers(list) {
+      document.querySelectorAll('.server-card').forEach(function(card) {
+        var st = null;
+        for (var i = 0; list && i < list.length; i++) if (list[i].id === card.getAttribute('data-server')) st = list[i];
+        var label   = card.querySelector('.server-status-label');
+        var players = card.querySelector('.server-players');
+        var map     = card.querySelector('.server-map');
+        map.textContent = '';
+        players.textContent = '';
+        if (!st) {
+          card.setAttribute('data-state', 'unknown');
+          setServerLabel(label, 'srv-unknown');
+        } else if (!st.online) {
+          card.setAttribute('data-state', 'offline');
+          setServerLabel(label, 'srv-offline');
+        } else {
+          card.setAttribute('data-state', 'online');
+          setServerLabel(label, 'srv-online');
+          if (typeof st.players === 'number' && typeof st.maxPlayers === 'number') players.textContent = st.players + ' / ' + st.maxPlayers;
+          if (st.map) {
+            var mapLabel = document.createElement('span');
+            mapLabel.className = 'server-map-label';
+            setServerLabel(mapLabel, 'srv-map');
+            var mapName = document.createElement('code');
+            mapName.textContent = st.map;
+            map.appendChild(mapLabel);
+            map.appendChild(mapName);
+          }
+        }
+      });
+    }
+    function loadServers() {
+      fetch('/api/servers.json', { headers: { 'Accept': 'application/json' } })
+        .then(function(r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+        .then(function(d) { renderServers(d.servers); })
+        .catch(function() { renderServers(null); });
+    }
+    loadServers();
+    setInterval(function() { if (!document.hidden) loadServers(); }, 60000);
+  </script>
+</Layout>
+
+<style>
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    max-width: 1200px; margin: 0 auto; padding: 0 24px;
+    height: 64px; display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo-img-link { display: flex; align-items: center; text-decoration: none; }
+  .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; margin: 0 auto; padding: 0; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; letter-spacing: 0.02em; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-discord { color: var(--discord) !important; border: 1px solid var(--discord); padding: 5px 14px; border-radius: 6px; transition: background 0.2s !important; }
+  .nav-discord:hover { background: var(--discord) !important; color: white !important; }
+  .nav-kofi { color: var(--orange) !important; border: 1px solid var(--orange); padding: 5px 14px; border-radius: 6px; transition: background 0.2s !important; }
+  .nav-kofi:hover { background: var(--orange) !important; color: white !important; }
+  .nav-right { display: flex; align-items: center; gap: 12px; }
+  .lang-toggle {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 8px;
+    padding: 5px 11px; cursor: pointer; font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 0.07em; color: var(--text); transition: border-color 0.2s, background 0.2s; outline: none;
+  }
+  .lang-toggle:hover { border-color: rgba(255,255,255,0.18); background: rgba(255,255,255,0.07); }
+  .lang-toggle:focus-visible { border-color: var(--orange); box-shadow: 0 0 0 2px rgba(255,107,43,0.3); }
+  .lang-globe { font-size: 0.85rem; }
+  .lang-active { color: var(--text); }
+  .lang-sep { color: var(--border); font-weight: 400; }
+  .lang-inactive { color: var(--muted); transition: color 0.15s; }
+  .lang-toggle:hover .lang-inactive { color: var(--text); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: 0.3s; }
+  .mobile-menu { display: none; flex-direction: column; padding: 16px 24px 20px; gap: 12px; border-top: 1px solid var(--border); }
+  .mobile-menu a { color: var(--muted); text-decoration: none; font-weight: 500; padding: 8px 0; border-bottom: 1px solid var(--border); }
+  .mobile-menu.open { display: flex; }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .lang-sep, .lang-inactive { display: none; }
+    .lang-toggle { padding: 5px 9px; }
+  }
+
+  /* ── Fondo ── */
+  .sv-bg { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+  .sv-grid-overlay {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at 50% 0%, #000 0%, transparent 70%);
+  }
+  .sv-orb { position: absolute; border-radius: 50%; filter: blur(90px); }
+  .sv-orb1 { width: 520px; height: 520px; background: var(--orange); top: -260px; left: 50%; transform: translateX(-50%); opacity: 0.22; }
+  .sv-orb2 { width: 420px; height: 420px; background: #5865F2; bottom: -200px; right: -120px; opacity: 0.12; }
+
+  /* ── Cabecera ── */
+  .servers-page { max-width: 860px; margin: 0 auto; padding: 112px 24px 72px; }
+  .sv-header { text-align: center; margin-bottom: 36px; animation: fadeInUp 0.6s ease both; }
+  .section-tag {
+    display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; color: var(--orange);
+    padding: 6px 14px; border: 1px solid rgba(255,107,43,0.35); border-radius: 999px;
+    background: rgba(255,107,43,0.08); margin-bottom: 16px;
+  }
+  .sv-title {
+    font-size: clamp(2.1rem, 5vw, 3.4rem); line-height: 1.05; margin-bottom: 12px;
+    background: linear-gradient(180deg, #fff 30%, #b9b9d6);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .sv-sub { color: var(--muted); max-width: 520px; margin: 0 auto; }
+
+  /* ── Tarjetas ── */
+  .servers-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;
+    animation: fadeInUp 0.6s 0.1s ease both;
+  }
+  .server-card {
+    background: linear-gradient(180deg, rgba(26,26,46,0.85), rgba(15,15,26,0.85));
+    border: 1px solid var(--border); border-radius: 16px;
+    padding: 24px; display: flex; flex-direction: column; gap: 10px; transition: border-color 0.2s;
+    box-shadow: 0 30px 60px -30px rgba(0,0,0,0.7);
+  }
+  .server-card:hover { border-color: rgba(255,107,43,0.4); }
+  .server-card-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .server-status { display: inline-flex; align-items: center; gap: 8px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+  .server-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--muted); }
+  .server-card[data-state="online"] .server-status { color: #22c55e; }
+  .server-card[data-state="online"] .server-dot { background: #22c55e; box-shadow: 0 0 10px #22c55e99; }
+  .server-card[data-state="offline"] .server-status { color: #ef4444; }
+  .server-card[data-state="offline"] .server-dot { background: #ef4444; }
+  .server-card[data-state="loading"] .server-dot { animation: flicker 1.5s infinite; }
+  .server-players { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--text); }
+  .server-name { font-size: 1.4rem; line-height: 1.2; }
+  .server-mode { color: var(--muted); font-size: 0.9rem; }
+  .server-map { display: flex; gap: 8px; align-items: center; font-size: 0.85rem; color: var(--muted); min-height: 1.2em; }
+  .server-map code, .server-address code { color: var(--text); font-family: ui-monospace, 'Cascadia Code', Consolas, monospace; overflow-wrap: anywhere; }
+  .server-address { font-size: 0.85rem; }
+  .server-connect {
+    margin-top: 8px; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: linear-gradient(135deg, var(--orange), #ff8a50); color: #fff; text-decoration: none; font-weight: 600;
+    padding: 12px 18px; border-radius: 10px; transition: filter 0.2s, box-shadow 0.2s;
+    box-shadow: 0 6px 20px -6px var(--orange-glow);
+  }
+  .server-connect:hover { filter: brightness(1.08); }
+  .server-connect:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+  .server-card[data-state="offline"] .server-connect { background: var(--surface2); color: var(--muted); box-shadow: none; }
+
+  .sv-hint, .sv-footnote { text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 28px; }
+  .sv-legal { margin-top: 12px; }
+  .sv-legal a { color: var(--muted); text-decoration: none; }
+  .sv-legal a:hover { color: var(--text); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sv-header, .servers-grid, .server-card[data-state="loading"] .server-dot { animation: none; }
+  }
+  @media (max-width: 600px) {
+    .nav-inner { padding: 0 16px; }
+    .servers-page { padding: 92px 16px 56px; }
+    .sv-header { margin-bottom: 24px; }
+    .server-card { padding: 20px; }
+  }
+</style>
