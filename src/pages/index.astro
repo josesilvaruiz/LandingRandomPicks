@@ -85,8 +85,8 @@ const faq = [
   {
     q: '¿Cómo me conecto al servidor?',
     qEn: 'How do I connect to the server?',
-    a: 'Abre CS2, activa la consola con ~ y escribe: connect cs2.randompicks.es:27015. También puedes buscar "RandomPicks" en el navegador de servidores.',
-    aEn: 'Open CS2, open the console with ~ and type: connect cs2.randompicks.es:27015. You can also search for "RandomPicks" in the server browser.',
+    a: 'Abre CS2, activa la consola con ~ y escribe: connect cs2.randompicks.es:27015 (Minigames) o connect cs2.randompicks.es:27016 (Surf). También puedes buscar "RandomPicks" en el navegador de servidores.',
+    aEn: 'Open CS2, open the console with ~ and type: connect cs2.randompicks.es:27015 (Minigames) or connect cs2.randompicks.es:27016 (Surf). You can also search for "RandomPicks" in the server browser.',
   },
 ];
 
@@ -191,12 +191,21 @@ const ranks = [
       </div>
 
       <div class="ip-gt-group">
+        <span class="ip-label ip-heading" data-i18n="ip-label">CONECTAR AHORA</span>
         <div class="server-ip" id="server-ip">
-          <span class="ip-label" data-i18n="ip-label">CONECTAR AHORA</span>
+          <span class="ip-mode">MINIGAMES</span>
           <code class="ip-text">cs2.randompicks.es:27015</code>
-          <button class="ip-copy" id="copy-btn" title="Copiar IP">
+          <button class="ip-copy" data-ip="cs2.randompicks.es:27015" title="Copiar IP">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-            <span id="copy-label" data-i18n="copy-label">Copiar IP</span>
+            <span class="copy-label" data-i18n="copy-label">Copiar IP</span>
+          </button>
+        </div>
+        <div class="server-ip">
+          <span class="ip-mode">SURF</span>
+          <code class="ip-text">cs2.randompicks.es:27016</code>
+          <button class="ip-copy" data-ip="cs2.randompicks.es:27016" title="Copiar IP">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span class="copy-label" data-i18n="copy-label">Copiar IP</span>
           </button>
         </div>
         <div class="hero-gametracker">
@@ -430,7 +439,7 @@ const ranks = [
           <a href="/ranking">Ranking</a>
           <a href="https://discord.gg/HSMZT6njnk" target="_blank" rel="noopener">Discord</a>
           <a href="/privacidad" data-i18n="footer-privacy">Privacidad</a>
-          <span class="footer-ip">cs2.randompicks.es:27015</span>
+          <span class="footer-ip">cs2.randompicks.es:27015 · :27016 (Surf)</span>
         </div>
       </div>
     </div>
@@ -492,7 +501,7 @@ const ranks = [
         'faq-4-q': '¿Con qué frecuencia se añaden modos nuevos?',
         'faq-4-a': 'La comunidad vota en Discord qué modos añadir. Tenemos un canal específico para propuestas y añadimos contenido de forma regular.',
         'faq-5-q': '¿Cómo me conecto al servidor?',
-        'faq-5-a': 'Abre CS2, activa la consola con ~ y escribe: connect cs2.randompicks.es:27015. También puedes buscar "RandomPicks" en el navegador de servidores.',
+        'faq-5-a': 'Abre CS2, activa la consola con ~ y escribe: connect cs2.randompicks.es:27015 (Minigames) o connect cs2.randompicks.es:27016 (Surf). También puedes buscar "RandomPicks" en el navegador de servidores.',
         'founder-badge': '🎖️ ROL DE FUNDADOR — PLAZAS LIMITADAS',
         'discord-title': 'Entra antes de que acabe el lanzamiento',
         'discord-sub': 'El rol de fundador es exclusivo para quienes entran durante el lanzamiento. Tendrás voz en los modos que añadimos, acceso a canales privados y el reconocimiento permanente de haber estado desde el inicio.',
@@ -554,7 +563,7 @@ const ranks = [
         'faq-4-q': 'How often are new modes added?',
         'faq-4-a': "The community votes on Discord for which modes to add. We have a dedicated channel for suggestions and add content regularly.",
         'faq-5-q': 'How do I connect to the server?',
-        'faq-5-a': 'Open CS2, open the console with ~ and type: connect cs2.randompicks.es:27015. You can also search for "RandomPicks" in the server browser.',
+        'faq-5-a': 'Open CS2, open the console with ~ and type: connect cs2.randompicks.es:27015 (Minigames) or connect cs2.randompicks.es:27016 (Surf). You can also search for "RandomPicks" in the server browser.',
         'founder-badge': '🎖️ FOUNDER ROLE — LIMITED SPOTS',
         'discord-title': 'Join before the launch window closes',
         'discord-sub': "The founder role is exclusive to those who join during launch. You'll have a voice in the modes we add, access to private channels and permanent recognition for being here from the start.",
@@ -617,12 +626,13 @@ const ranks = [
     });
 
     /* COPY IP */
-    var copyBtn   = document.getElementById('copy-btn');
-    var copyLabel = document.getElementById('copy-label');
-    if (copyBtn) copyBtn.addEventListener('click', function() {
-      navigator.clipboard.writeText('cs2.randompicks.es:27015');
-      copyLabel.textContent = currentLang === 'es' ? '¡Copiado!' : 'Copied!';
-      setTimeout(function() { copyLabel.textContent = t[currentLang]['copy-label']; }, 2000);
+    document.querySelectorAll('.ip-copy').forEach(function(btn) {
+      var label = btn.querySelector('.copy-label');
+      btn.addEventListener('click', function() {
+        if (navigator.clipboard) navigator.clipboard.writeText(btn.getAttribute('data-ip')).catch(function() {});
+        label.textContent = currentLang === 'es' ? '¡Copiado!' : 'Copied!';
+        setTimeout(function() { label.textContent = t[currentLang]['copy-label']; }, 2000);
+      });
     });
 
 
@@ -751,6 +761,8 @@ const ranks = [
     border-radius: 10px; padding: 10px 16px;
   }
   .ip-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.15em; color: var(--orange); }
+  .ip-heading { padding-left: 4px; }
+  .ip-mode { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; color: var(--text); background: rgba(255,107,43,0.12); border-radius: 4px; padding: 3px 7px; min-width: 84px; text-align: center; }
   .ip-text { font-family: 'Courier New', monospace; font-size: 0.92rem; color: var(--text); letter-spacing: 0.04em; user-select: all; }
   .ip-copy {
     display: inline-flex; align-items: center; gap: 6px;
